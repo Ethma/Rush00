@@ -16,6 +16,7 @@ echo "<br />";
 echo "Mot de passe: <input type='password' name='passwd' value=''/>";
 echo "<br />";
 echo "<input type='submit' name='submit' value='OK'>";
+echo "<a href='../index.php'>Accueil<a/>";
 echo "</form>";
 echo "</html></body>";
 ?>

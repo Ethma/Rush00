@@ -1,8 +1,11 @@
+<?PHP
+opcache_reset();
+?>
 <html>
 <head>
-<link rel="stylsheet" href="style/css.css?<?php echo time(); ?>" type="text/css">
+<link rel="stylesheet" type="text/css" href="./style/touch.css">
 </head>
-<body>
+<body class="body">
 <header>
 <?php
 session_start();
@@ -19,9 +22,22 @@ echo "<a href='admin/admin.php'>administration</a>";
 else
 {
 ?>
+<br />
+<a href 'index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
+<br />
+<nav>
 <a href="users/create.php">Inscription</a>
 <a href="users/login.php">Connexion</a>
 <a href="panier.php">Voir panier</a>
+</nav>
+<ul id=menu>
+			<li><h2>Gaming</h2>
+					<ul id=menu1>
+						<li><a href='http://127.0.0.1:8083/00/produit.php?p=img/new.png'>Clavier<a /></li>
+						<li>Souris</li>
+						<li>Casques</li>
+					</ul>
+				</li>
 <?PHP
 }
 ?>

@@ -1,6 +1,6 @@
 <?PHP
 include("header.php");
-include __DIR__ . '/config/bdd.php';
+include __DIR__ . '/../config/bdd.php';
 	if (isset($_GET['id']))
 	{
 		unset($_SESSION['panier'][$_GET['id']]);

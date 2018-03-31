@@ -1,6 +1,6 @@
 <div id="shoop">
 <?php
-include __DIR__ . '/config/bdd.php';
+include __DIR__ . '/../config/bdd.php';
 if (isset($_POST['submit']) && $_POST['submit'] === "Filtrer" && $_POST['Categories'] !== "")
 {
 	$c = mysqli_real_escape_string($bdd, $_POST['Categories']);
@@ -22,8 +22,8 @@ if (isset($_POST['submit']) && $_POST['submit'] === "Filtrer" && $_POST['Categor
 else
 {
 ?>
-<a href="produit.php?p=img/new.png"><img style="height:200px" src="img/new.png" alt="nouveau produit"></a>
-<a href="produit.php?p=img/solde.png"><img style="height:200px" src="img/solde.png" alt="produit en solde"></a>
+<a href="produit.php?p=img/http://5.196.225.53/img/klim-chroma.png"><img style="height:200px" src="http://5.196.225.53/img/klim-aim.png" alt="nouveau produit"></a>
+<a href="produit.php?p=img/solde.png"><img style="height:200px" src="http://5.196.225.53/img/klim-chroma.png" alt="produit en solde"></a>
 <?PHP
 }
 ?>

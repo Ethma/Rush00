@@ -30,7 +30,7 @@ Prix: <input type='text' name='prix' value=''/>
 <br />
 description: <input type='text' name='description' value=''/>
 <br />
-image (url): <input type='text' name='img' value=''/>
+image (optionelle): <input type='text' name='img' value=''/>
 <br />
 <input type='submit' name='submit' value='OK'>
 </form>
@@ -38,4 +38,5 @@ image (url): <input type='text' name='img' value=''/>
 </html>
 <?php
 }
+	//	Insert into Categories (item_id, nom_categories) Values('9', 'bleu');
 ?>
