@@ -12,28 +12,21 @@ if($_POST['submit'])
 		echo "Error creating database: " . mysqli_error($conn);
 	}
 	mysqli_close($conn);
-
 	$bdd = mysqli_connect(null, 'root', 'bdroot', 'shoop', 0, '/Users/mabessir/goinfre/mamp/mysql/tmp/mysql.sock');
 	if(!$bdd)
 		die("connection failed: " . mysqli_connect_error());
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30) NOT NULL, email VARCHAR(50), passwd VARCHAR(128))');
 	mysqli_free_result($req);
-
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Item (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(30) NOT NULL, prix float NOT NULL, description VARCHAR(255), image varchar(255) DEFAULT NULL)');
 	mysqli_free_result($req);
-
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Admin (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, Users_id INT(6) NOT NULL)');
 	mysqli_free_result($req);
-
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Categories (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, item_id INT(10) NOT NULL, nom_categories VARCHAR(30))');
 	mysqli_free_result($req);
-
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Commande (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, user_id INT(10) NOT NULL)');
 	mysqli_free_result($req);
-
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Panier (id INT(10) UNSIGNED, item_id INT(10) NOT NULL, qte INT(10))');
 	mysqli_free_result($req);
-
 	$sql = "INSERT INTO Item (nom, prix, description, image)
 		VALUES ('Blackwidow', '150', 'Razer BlackWidow Chroma V2 (2017) - Clavier Gaming Mécanique, Rétro-Éclairage RGB - Green Switch (Tactile & Clicky) - AZERTY-Layout', '5.196.225.53/img/razer-blackwidow.png');";
 	$sql .= "INSERT INTO Item (nom, prix, description, image)
@@ -53,15 +46,7 @@ if($_POST['submit'])
 	$sql .= "INSERT INTO Item (nom, prix, description, image)
 		VALUES ('AIM', '25', 'KLIM AIM Chroma RGB Gaming Mouse - NEW - PRECISE - Wired USB - Adjustable 500 to 7000 DPI - Programmable Buttons - Comfortable for all hand sizes - Ambidextrous Excellent grip Gamer Gaming', '5.196.225.53/img/klim-aim.png');";
 	$sql .= "INSERT INTO Item (nom, prix, description, image)
-		VALUES ('Electra-v2', '60', 'Le casque-micro Razer Electra v2 est destiné à ceux qui jouent tout le temps et partout : connectez-le simplement au port Jack audio 3.5 mm de votre PC, de votre ordinateur portable, de votre tablette ou de votre smartphone et c'est parti !', '5.196.225.53/img/razer-tiamat.png');";
-
-
-	if (mysqli_multi_query($bdd, $sql)) {
-		    echo "Item ok \n";
-	} else {
-		    echo "Error: " . $sql . "<br>" . mysqli_error($bdd);
-	}
-
+		VALUES ('Electra-v2', '60', 'Le casque-micro Razer Electra v2 est destiné à ceux qui jouent tout le temps et partout : connectez-le simplement au port Jack audio 3.5 mm de votre PC, de votre ordinateur portable, de votre tablette ou de votre smartphone!', '5.196.225.53/img/razer-tiamat.png');";
 	$cat = "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('1', 'clavier');";
 	$cat .= "INSERT INTO Categories (item_id, nom_categories)
@@ -102,11 +87,10 @@ if($_POST['submit'])
 		VALUES ('9', 'Klim');";
 	$cat .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('10', 'razer');";
-	if (mysqli_multi_query($bdd, $cat)) {
-		    echo "Categories ok \n";
-	} else {
-		    echo "Error: " . $cat . "<br>" . mysqli_error($bdd);
-	}
+	if (mysqli_multi_query($bdd, $cat))
+		echo "Categories ok \n";
+	else
+		echo "Error: " . $cat . "<br>" . mysqli_error($bdd);
 }
 else
 {

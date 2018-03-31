@@ -1,5 +1,36 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style/touch.css">
+<link rel="stylesheet" type="text/css" href="style/footer.css">
+</head>
+<body class="body">
+<header>
+<?php
+session_start();
+if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
+{
+echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>";
+?>
+<a href="panier.php">  Voir panier</a>
+<a href="users/logout.php">Deconnexion</a>
 <?PHP
-include("header.php");
+if (isset($_SESSION['admin']))
+echo "<a href='admin/admin.php'>administration</a>";
+}
+else
+{
+?>
+<br />
+<a href='/00/index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
+<br />
+<a href="users/create.php">Inscription</a>
+<a href="users/login.php">Connexion</a>
+<?PHP
+}
+?>
+</header>
+</html>
+<?PHP
 include __DIR__ . '/config/bdd.php';
 	if (isset($_GET['id']))
 	{

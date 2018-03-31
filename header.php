@@ -4,6 +4,7 @@ opcache_reset();
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="./style/touch.css">
+<link rel="stylesheet" type="text/css" href="./style/footer.css">
 </head>
 <body class="body">
 <header>
@@ -11,8 +12,11 @@ opcache_reset();
 session_start();
 if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
 {
+echo '<a=href "http://127.0.0.1:8083/00/index.php"><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a /> <br \>';
 echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>";
 ?>
+<br \>
+<br \>
 <a href="panier.php">  Voir panier</a>
 <a href="users/logout.php">Deconnexion</a>
 <?PHP
@@ -23,21 +27,11 @@ else
 {
 ?>
 <br />
-<a href 'index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
+<a href='http://127.0.0.1:8083/00/index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
 <br />
-<nav>
 <a href="users/create.php">Inscription</a>
 <a href="users/login.php">Connexion</a>
 <a href="panier.php">Voir panier</a>
-</nav>
-<ul id=menu>
-			<li><h2>Gaming</h2>
-					<ul id=menu1>
-						<li><a href='http://127.0.0.1:8083/00/produit.php?p=img/new.png'>Clavier<a /></li>
-						<li>Souris</li>
-						<li>Casques</li>
-					</ul>
-				</li>
 <?PHP
 }
 ?>
