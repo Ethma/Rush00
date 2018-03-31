@@ -30,7 +30,7 @@ Prix: <input type='text' name='prix' value=''/>
 <br />
 description: <input type='text' name='description' value=''/>
 <br />
-image (optionelle): <input type='text' name='img' value=''/>
+image (url): <input type='text' name='img' value=''/>
 <br />
 <input type='submit' name='submit' value='OK'>
 </form>
