@@ -24,11 +24,12 @@ else
 <a href='/00/index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
 <br />
 <a href="./login.php">Connexion</a>
-<a href="panier.php">Voir panier</a>
+<a href="../panier.php">Voir panier</a>
 <?PHP
 }
 ?>
 </header>
+</html>
 <?PHP
 include __DIR__ . '/../config/bdd.php';
 if (!(empty($_POST['firstname'])) && !(empty($_POST['passwd'])) && !(empty($_POST['lastname'])) && !(empty($_POST['mail'])) && !(empty($_POST['submit'])) && $_POST['submit'] === "OK")

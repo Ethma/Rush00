@@ -24,11 +24,12 @@ else
 <a href='/00/index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
 <br />
 <a href="./create.php">Inscription</a>
-<a href="panier.php">Voir panier</a>
+<a href="../panier.php">Voir panier</a>
 <?PHP
 }
 ?>
 </header>
+</html>
 <?PHP
 include __DIR__ . '/../config/bdd.php';
 include ('auth.php');
@@ -47,6 +48,7 @@ echo "<br />";
 echo "Mot de passe: <input type='password' name='passwd' value=''/>";
 echo "<br />";
 echo "<input type='submit' name='submit' value='OK'>";
+echo "<br \>";
 echo "<a href='../index.php'>Accueil<a/>";
 echo "</form>";
 echo "</html></body>";
