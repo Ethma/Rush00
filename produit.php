@@ -16,7 +16,7 @@ else
 		$id = $tmp['id'];
 	}
 	mysqli_free_result($result);
-	echo "<img style='height:300' src='" . $img . "'><br />";
+	echo "<img style='height:300' src='http:/" . $img . "'><br />";
 	echo "Nom : " . $nom . "<br />";
 	echo "prix : " . $prix . "<br />";
 	echo "Description : " . $description;

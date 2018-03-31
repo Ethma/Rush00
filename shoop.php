@@ -1,6 +1,6 @@
 <div id="shoop">
 <?php
-include __DIR__ . '/../config/bdd.php';
+include __DIR__ . '/config/bdd.php';
 if (isset($_POST['submit']) && $_POST['submit'] === "Filtrer" && $_POST['Categories'] !== "")
 {
 	$c = mysqli_real_escape_string($bdd, $_POST['Categories']);

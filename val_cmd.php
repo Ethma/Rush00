@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-include __DIR__ . '/../config/bdd.php';
+include __DIR__ . '/config/bdd.php';
 if ($_POST['submit'] && $_SESSION['loged'])
 {
 	if (!isset($_SESSION['cmd']))

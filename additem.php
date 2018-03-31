@@ -38,5 +38,4 @@ image (url): <input type='text' name='img' value=''/>
 </html>
 <?php
 }
-	//	Insert into Categories (item_id, nom_categories) Values('9', 'bleu');
 ?>
