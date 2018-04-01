@@ -3,7 +3,7 @@ include("header.php");
 session_start();
 function auth($login, $passwd, $bdd)
 {
-	$req = "SELECT id, passwd FROM Users WHERE firstname = '" . $login . "'";
+	$req = "SELECT id, passwd FROM Users WHERE firstname = '" . mysqli_real_escape_string($bdd, $login) . "'";
 	$result = mysqli_query($bdd, $req);
 	while ($tmp = mysqli_fetch_assoc($result)) {
 		if ($tmp['passwd'] === hash("whirlpool", $passwd))

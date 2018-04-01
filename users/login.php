@@ -4,7 +4,7 @@ include ('auth.php');
 if (isset($_POST['login']) && isset($_POST['passwd']) && isset($_POST['submit']) && $_POST['submit'] === "OK")
 {
 	$_SESSION['loged'] = auth($_POST['login'], $_POST['passwd'], $bdd);
-	if($_SESSION['loged'])
+	if(isset($_SESSION['loged']))
 		header("Location: ../index.php");
 }
 if (isset($_POST['submit']))

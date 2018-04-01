@@ -2,7 +2,7 @@
 include("header.php");
 session_start();
 include __DIR__ . '/../config/bdd.php';
-if(isset($_SESSION['logged']))
+if(isset($_SESSION['admin']))
 {
 if ($_POST['nom'] && $_POST['prix'] && $_POST['description'] && $_POST['submit'] && $_POST['submit'] === "OK")
 {
@@ -89,15 +89,15 @@ $res = mysqli_query($bdd, $req);
 while ($tmp = mysqli_fetch_assoc($res)) {
 echo "<div class='additem'>";
 echo "<form method='POST' action='additem.php' >";
-echo "Nom du produit :<input type='text' name='nom' value='" . $tmp['nom'] . "'><br />";
-echo "Prix de vente :<input type='text' name='prix' value='" . $tmp['prix'] . "'><br />";
-echo "Description du produit :<input type='text' name='description' value='" . $tmp['description'] . "'><br />";
-echo "Image (url) :<input type='text' name='image' value='" . $tmp['image'] . "'><br />";
-echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
+echo "Nom du produit :<input type='text' name='nom' value='" . htmlspecialchars($tmp['nom']) . "'><br />";
+echo "Prix de vente :<input type='text' name='prix' value='" . htmlspecialchars($tmp['prix']) . "'><br />";
+echo "Description du produit :<input type='text' name='description' value='" . htmlspecialchars($tmp['description']) . "'><br />";
+echo "Image (url) :<input type='text' name='image' value='" . htmlspecialchars($tmp['image']) . "'><br />";
+echo "<input type='hidden' name='id' value='" . htmlspecialchars($tmp['id']) . "'/>";
 echo "<input type='submit' name='submit' value='Modifier Item'>";
 echo "</form> <br />";
 echo "<form method='POST' action='additem.php' >";
-echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
+echo "<input type='hidden' name='id' value='" . htmlspecialchars($tmp['id']) . "'/>";
 echo "<input type='submit' name='submit' value='Suprimer Item'>";
 echo "</form> <br />";
 echo "</div>";

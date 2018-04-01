@@ -5,6 +5,7 @@ include __DIR__ . '/../config/bdd.php';
 echo "<br /><a href='../admin/admin.php'><span class='btn'>Administration</span></a><br /><br />";
 if (!isset($_SESSION['admin']))
 	header("Location: index.php");
+else {
 if(isset($_POST['id']))
 {
 	if (isset($_POST['submit']))
@@ -69,9 +70,9 @@ $res = mysqli_query($bdd, $req);
 while ($tmp = mysqli_fetch_assoc($res)) {
 echo "<div class='additem'>";
 echo "<form method='POST' action='modif_user.php' >";
-echo "Prénom :<input type='text' name='firstname' value='" . $tmp['firstname'] . "'><br />";
-echo "Nom :<input type='text' name='lastname' value='" . $tmp['lastname'] . "'><br />";
-echo "Email :<input type='text' name='email' value='" . $tmp['email'] . "'><br />";
+echo "Prénom :<input type='text' name='firstname' value='" . htmlspecialchars($tmp['firstname']) . "'><br />";
+echo "Nom :<input type='text' name='lastname' value='" . htmlspecialchars($tmp['lastname']) . "'><br />";
+echo "Email :<input type='text' name='email' value='" . htmlspecialchars($tmp['email']) . "'><br />";
 echo "Mot de passe :<input type='password' name='passwd' value=''><br />";
 echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
 echo "<input type='submit' name='submit' value='Modifier Utilisateur'>";
@@ -85,4 +86,5 @@ echo "<br />";
 }
 mysqli_free_result($res);
 include("footer.php");
+}
 ?>

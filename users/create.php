@@ -9,7 +9,7 @@
 session_start();
 if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
 {
-echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>";
+echo "Mon compte : <a href='users/modif.php'>" . htmlspecialchars($_SESSION['firstname']) . "</a>";
 ?>
 <a href="panier.php"><span class='btn'>Votre panier</span></a>
 <a href="users/logout.php"><span class='btn'>Déconnexion</span></a>

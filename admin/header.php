@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../style/touch.css">
@@ -9,11 +12,11 @@
 if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
 {
 echo '<a href="../index.php"><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a /> <br \>';
-echo "<a href='users/modif.php'><span class='btn'>>Mes informations</span></a>";
+echo "<a href='../users/modif.php'><span class='btn'>>Mes informations</span></a>";
 ?>
 <br \>
 <br \>
-<a href="users/logout.php">Déconnexion</a>
+<a href="../users/logout.php">Déconnexion</a>
 <br \>
 <?PHP
 if (isset($_SESSION['admin']))

@@ -11,10 +11,10 @@ if (isset($_POST['submit']) && $_POST['submit'] === "Filtrer" && $_POST['Categor
 		$nom = $tmp['nom'];
 		$description = $tmp['description'];
 		$prix = $tmp['prix'];
-	echo "<a href='produit.php?p=" . $img . "'><img style='height:300' src='http://" . $img . "'></a><br />";
-	echo "Nom : " . $nom . "<br />";
-	echo "prix : " . $prix . "<br />";
-	echo "Description : " . $description;
+	echo "<a href='produit.php?p=" . htmlspecialchars($img) . "'><img style='height:300' src='http://" . htmlspecialchars($img) . "'></a><br />";
+	echo "Nom : " . htmlspecialchars($nom) . "<br />";
+	echo "prix : " . htmlspecialchars($prix) . "<br />";
+	echo "Description : " . htmlspecialchars($description);
 	echo "<br />----------------------------------------<br />";
 	}
 	mysqli_free_result($result);
@@ -44,7 +44,7 @@ else
 		if ($is === 0)
 		{
 			array_push($cat, $tmp2['nom_categories']);
-			echo "<OPTION>" . $tmp2['nom_categories'];
+			echo "<OPTION>" . htmlspecialchars($tmp2['nom_categories']);
 		}
 	}
 	mysqli_free_result($result2);

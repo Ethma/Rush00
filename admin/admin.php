@@ -4,6 +4,7 @@ include __DIR__ . '/../config/bdd.php';
 session_start();
 if (!isset($_SESSION['admin']))
 	header("Location: index.php");
+else {
 ?>
 <a href="additem.php"><span class='btn'>>Liste des produits</span></a></br />
 </br />
@@ -12,3 +13,4 @@ if (!isset($_SESSION['admin']))
 </br />
 </br />
 <a href="cmd.php"><span class='btn'>>Liste des commandes</span></a>
+<?php } ?>

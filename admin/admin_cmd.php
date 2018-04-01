@@ -19,17 +19,18 @@ else if (isset($_GET['id']))
 	$res = mysqli_query($bdd, $req);
 	echo "<div class='additem'>";
 	while ($t = mysqli_fetch_assoc($res)) {
-		$sql = "SELECT nom, prix, description, image FROM Item WHERE id='" . $t['item_id'] . "'";
+		$itemid = mysqli_real_escape_string($bdd, $t['item_id']);
+		$sql = "SELECT nom, prix, description, image FROM Item WHERE id='" . $itemid . "'";
 		$result = mysqli_query($bdd, $sql);
 		while ($tmp = mysqli_fetch_assoc($result)) {
 			$total += ($tmp['prix'] * $t['qte']);
-			echo "Nom : " . $tmp['nom'] . "<br />";
-			echo "prix : " . $tmp['prix'] . "€<br />";
-			echo "Quantité : " . $t['qte']."<br /><br />";
+			echo "Nom : " . htmlspecialchars($tmp['nom']) . "<br />";
+			echo "prix : " . htmlspecialchars($tmp['prix']) . "€<br />";
+			echo "Quantité : " . htmlspecialchars($t['qte']) ."<br /><br />";
 		}
 		mysqli_free_result($result);
 	}
-	echo "<br /><h3>Total: " . $total . "€</h3><br />";
+	echo "<br /><h3>Total: " . htmlspecialchars($total) . "€</h3><br />";
 	echo "</div>";
 ?>
 <form method="POST" action="admin_cmd.php" >

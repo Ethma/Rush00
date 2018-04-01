@@ -67,10 +67,10 @@ else
 		$id = $tmp['id'];
 	}
 	mysqli_free_result($result);
-	echo "<img style='height:300' src='http://" . $img . "'><br />";
-	echo "<p class='descrip'>Nom : " . $nom . "<br />";
-	echo "prix : " . $prix . "<br />";
-	echo "Description : " . $description . "</p>";
+	echo "<img style='height:300' src='http://" . htmlspecialchars($img) . "'><br />";
+	echo "<p class='descrip'>Nom : " . htmlspecialchars($nom) . "<br />";
+	echo "prix : " . htmlspecialchars($prix) . "<br />";
+	echo "Description : " . htmlspecialchars($description) . "</p>";
 	?>
 <form method="POST" action=addpanier.php >
 <input type="text" name="qte" value="">
@@ -92,7 +92,7 @@ if (isset($_SESSION['admin']))
 	$sql2 = "SELECT id, nom_categories FROM Categories WHERE item_id='" . $id . "'";
 	$result2 = mysqli_query($bdd, $sql2);
 	while ($tmp2 = mysqli_fetch_assoc($result2)) {
-		echo "<a href=produit.php?itad=" . $tmp2['id'] . ">supprimer " . $tmp2['nom_categories'] . "</a><br />";
+		echo "<a href=produit.php?itad=" . $tmp2['id'] . ">supprimer " . htmlspecialchars($tmp2['nom_categories']) . "</a><br />";
 	}
 	mysqli_free_result($result2);
 }

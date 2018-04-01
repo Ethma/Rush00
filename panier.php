@@ -60,14 +60,14 @@ if (isset($_SESSION['panier'])) {
 	foreach($_SESSION['panier'] as $k => $v)
 	{
 		$veri = 1;
-		$sql = "SELECT nom, prix, description, image FROM Item WHERE id='" . $k . "'";
+		$sql = "SELECT nom, prix, description, image FROM Item WHERE id='" . mysqli_real_escape_string($bdd, $k) . "'";
 		$result = mysqli_query($bdd, $sql);
 		while ($tmp = mysqli_fetch_assoc($result)) {
 			$total += ($tmp['prix'] * $v);
 			echo "<div class='additem'>";
-			echo "Nom : " . $tmp['nom'] . "<br />";
-			echo "Prix : " . $tmp['prix']."€";
-			echo "<br />Quantité : " . $_SESSION['panier'][$k]."<br />";
+			echo "Nom : " . htmlspecialchars($tmp['nom']) . "<br />";
+			echo "Prix : " . htmlspecialchars($tmp['prix'])."€";
+			echo "<br />Quantité : " . htmlspecialchars($_SESSION['panier'][$k])."<br />";
 			echo "<br /><a href='panier.php?id=" . $k . "'><span class='btn'>>Retirer du panier</span></a><br /><br />";
 			echo "</div>";
 			echo "<br />";
@@ -76,7 +76,7 @@ if (isset($_SESSION['panier'])) {
 	}
 	if ($veri === 1)
 	{
-		echo "<div class='info'><br />Total :" . $total . "€<br /></div>";
+		echo "<div class='info'><br />Total :" . htmlspecialchars($total) . "€<br /></div>";
 		echo "<form method='POST' action='val_cmd.php'><br />";
 		echo "<input class='btn' type='submit' name='submit' value='Valider panier'>";
 		echo "<h4>/!\Définitif/!\</h4>";

@@ -16,7 +16,7 @@ if (isset($_POST['submit']) && isset($_SESSION['loged']))
 			mysqli_free_result($result);
 			foreach($_SESSION['panier'] as $k => $v)
 			{
-				$sql = "INSERT INTO Commande (id, user_id, item_id, qte) VALUE('" . $id . "', '" . $_SESSION['userid'] . "', '" . $k . "', '" . $v . "')";
+				$sql = "INSERT INTO Commande (id, user_id, item_id, qte) VALUE('" . $id . "', '" . mysqli_real_escape_string($bdd, $_SESSION['userid']) . "', '" . $k . "', '" . $v . "')";
 				mysqli_query($bdd, $sql);
 				unset($_SESSION['panier']);
 			}
