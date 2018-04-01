@@ -4,6 +4,7 @@ session_start();
 if (!$_SESSION['admin'])
 	header("Location: ../index.php");
 include __DIR__ . '/../config/bdd.php';
+echo "<h1>Liste des commandes utilisateur</h1>";
 $cmd = array();
 $sql = "SELECT * FROM Commande";
 $result = mysqli_query($bdd, $sql);
@@ -20,6 +21,3 @@ while ($tmp = mysqli_fetch_assoc($result)) {
 	}
 }
 ?>
-<html>
-<h1>Liste des commandes utilisateur</h1>
-</html>
