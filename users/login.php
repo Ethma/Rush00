@@ -1,6 +1,8 @@
 <?PHP
 include __DIR__ . '/../config/bdd.php';
 include ('auth.php');
+echo "<a href='create.php'> <span class='btn'>>Inscription</span></a><br /> <br />";
+echo '<br /><a href="panier.php"><span class="btn">> Mon Panier</span><br /></a><br /><br />';
 if (isset($_POST['login']) && isset($_POST['passwd']) && isset($_POST['submit']) && $_POST['submit'] === "OK")
 {
 	$_SESSION['loged'] = auth($_POST['login'], $_POST['passwd'], $bdd);

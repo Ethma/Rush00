@@ -7,7 +7,7 @@ opcache_reset();
 <link rel="stylesheet" type="text/css" href="./style/footer.css">
 <link rel="stylesheet" type="text/css" href="./style/menu.css">
 </head>
-<body style="width: 900px;margin-left:30%;">
+<body style="width: 800px;margin-left:20%;">
 <header>
 <?php
 session_start();
@@ -21,7 +21,7 @@ echo "<a href='users/modif.php'>" ."<span class=btn>>Mon compte</span></a>";
 <a href="users/logout.php"<span class="btn">>Déconnexion</span></a>
 <?PHP
 if (isset($_SESSION['admin']))
-echo "<br /><br /><br /><a href='admin/admin.php'><span class='btn'>>Administration</span></a><br /> <br />";
+echo "<a href='admin/admin.php'><span class='btn'>>Administration</span></a><br /> <br />";
 }
 else
 {

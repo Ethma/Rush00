@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="../style/touch.css">
 <link rel="stylesheet" type="text/css" href="../style/footer.css">
 </head>
-<body class="body">
+<body style="width: 900px;margin-left:30%;">
 <header>
 <?php
 session_start();
