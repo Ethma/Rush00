@@ -109,7 +109,9 @@ a
 }
 .descrip
 {
-	background-color: white;
+	background-color: rgba(9, 100, 122, 0.6);
+	width: 700px;
+	border-radius: 10px;
 }
 .additem
 {
