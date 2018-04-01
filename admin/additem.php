@@ -8,8 +8,13 @@ if ($_POST['nom'] && $_POST['prix'] && $_POST['description'] && $_POST['submit']
 	$description = mysqli_real_escape_string($bdd, $_POST['description']);
 	$img = mysqli_real_escape_string($bdd, $_POST['img']);
 	$req = "INSERT INTO Item (nom, prix, description, image) VALUES('" . $nom . "', '" . $prix . "', '" . $description . "', '" . $img . "')";
-	$result = mysqli_query($bdd, $req);
-	mysqli_free_result($result);
+	if (mysqli_query($bdd, $req))
+	{
+		$lid = mysqli_insert_id($bdd);
+		$sql = "INSERT INTO Categories (item_id, nom_categories)
+			VALUES ('" . $lid . "', 'new');";
+		mysqli_query($bdd, $sql);
+	}
 }
 else if (isset($_POST['submit']) && isset($_POST['id']))
 {
