@@ -3,7 +3,7 @@ include("header.php");
 session_start();
 include __DIR__ . '/../config/bdd.php';
 if (!isset($_SESSION['admin']))
-	header("Location: index.php");
+	header("Location: ../index.php");
 else {
 if(isset($_POST['id']))
 {
