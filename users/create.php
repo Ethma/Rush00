@@ -11,8 +11,8 @@ if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
 {
 echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>";
 ?>
-<a href="panier.php">  Voir panier</a>
-<a href="users/logout.php">Deconnexion</a>
+<a href="panier.php"><span class='btn'>Votre panier</span></a>
+<a href="users/logout.php"><span class='btn'>Déconnexion</span></a>
 <?PHP
 if (isset($_SESSION['admin']))
 echo "<a href='admin/admin.php'>administration</a>";
