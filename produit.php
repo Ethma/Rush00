@@ -48,7 +48,7 @@ else
 include __DIR__ . '/config/bdd.php';
 if (isset($_GET['itad']))
 {
-	$itpad = mysqli_real_escape_string($bdd, $_POST['itpad']);
+	$itpad = mysqli_real_escape_string($bdd, $_GET['itad']);
 	$req = "DELETE FROM Categories WHERE id='" . $itpad . "'";
 	mysqli_query($bdd, $req);
 }
@@ -77,7 +77,7 @@ else
 <?PHP
 echo "<input type='hidden' name='id' value= '" . $id . "'>";
 ?>
-<input type='submit' name='submit' value='Ajouter au panier'>
+<input class='bton' type='submit' name='submit' value='Ajouter au panier'>
 </form>
 <?PHP
 }
@@ -86,7 +86,7 @@ if (isset($_SESSION['admin']))
 	<form action='categories.php' method='POST'>
 		<input type='text' name='cate'>
 	<?php echo "<input type='hidden' name='id' value= '" . $id . "'>";?>
-	<input type='submit' name='submit' value='ajouter une categorie'>
+	<input class='bton' type='submit' name='submit' value='ajouter une categorie'>
 </form>
 <?php
 	$sql2 = "SELECT id, nom_categories FROM Categories WHERE item_id='" . $id . "'";

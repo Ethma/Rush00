@@ -1,7 +1,6 @@
 <?php
 include("header.php");
 session_start();
-echo "<br /><a href='../admin/admin.php'><span class='btn'>Administration</span></a><br /><br />";
 if (!isset($_SESSION['admin']))
 	header("Location: ../index.php");
 else {

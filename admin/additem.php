@@ -58,28 +58,28 @@ else if (isset($_POST['submit']) && isset($_POST['id']))
 	if ($_POST['submit'] && $_POST['submit'] === "OK")
 	{
 		if (!$_POST['nom'])
-			echo "Champ Nom manquand. <br />";
+			echo "Champ Nom manquant. <br />";
 		if (!$_POST['prix'])
-			echo "Champ Prix manquand. <br />";
+			echo "Champ Prix manquant. <br />";
 		if (!$_POST['description'])
-			echo "Champ description manquand. <br />";
+			echo "Champ Description manquant. <br />";
+		if (!$_POST['img'])
+			echo "Champ Image manquant. <br />";
 	}
 ?>
 <html><body>
 <?PHP
-if (isset($_SESSION['admin']))
-	echo "<br /><br /><a href='../admin/admin.php'><span class='btn'>Administration</span></a><br /><br />";
 ?><div class='additem'>
 <form method="POST" action="additem.php" >
 Nom : <input type='text' name='nom' value=''/>
 <br />
 Prix: <input type='text' name='prix' value=''/>
 <br />
-description: <input type='text' name='description' value=''/>
+Description: <input type='text' name='description' value=''/>
 <br />
-image (url): <input type='text' name='img' value=''/>
+Image (url): <input type='text' name='img' value=''/>
 <br />
-<input type='submit' name='submit' value='OK'>
+<input class='bton' type='submit' name='submit' value='OK'>
 </form>
 </div>
 <br />
@@ -94,11 +94,11 @@ echo "Prix de vente :<input type='text' name='prix' value='" . htmlspecialchars(
 echo "Description du produit :<input type='text' name='description' value='" . htmlspecialchars($tmp['description']) . "'><br />";
 echo "Image (url) :<input type='text' name='image' value='" . htmlspecialchars($tmp['image']) . "'><br />";
 echo "<input type='hidden' name='id' value='" . htmlspecialchars($tmp['id']) . "'/>";
-echo "<input type='submit' name='submit' value='Modifier Item'>";
+echo "<input class='bton' type='submit' name='submit' value='Modifier Item'>";
 echo "</form> <br />";
 echo "<form method='POST' action='additem.php' >";
 echo "<input type='hidden' name='id' value='" . htmlspecialchars($tmp['id']) . "'/>";
-echo "<input type='submit' name='submit' value='Suprimer Item'>";
+echo "<input class='bton' type='submit' name='submit' value='Suprimer Item'>";
 echo "</form> <br />";
 echo "</div>";
 echo "<br />";

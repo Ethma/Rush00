@@ -2,7 +2,6 @@
 include("header.php");
 session_start();
 include __DIR__ . '/../config/bdd.php';
-echo "<br /><a href='../admin/admin.php'><span class='btn'>Administration</span></a><br /><br />";
 if (!isset($_SESSION['admin']))
 	header("Location: index.php");
 else if (isset($_POST['id']))

@@ -58,10 +58,10 @@ Email :<input type='text' name='email' value=''/>
 <br />
 Nouveau mot de passe: <input type='password' name='newpw' value=''/>
 <br />
-<input type='submit' name='submit' value='OK'>
+<input class='bton' type='submit' name='submit' value='OK'>
 </form>
 <form method="POST" action="modif.php" >
-<input type='submit' name='submit' value='Supprimer'>
+<input class='bton' type='submit' name='submit' value='Supprimer'>
 </form>
 </div>
 <br />

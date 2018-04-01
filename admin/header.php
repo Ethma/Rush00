@@ -12,20 +12,21 @@ session_start();
 if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
 {
 echo '<a href="../index.php"><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a /> <br \>';
-echo "<a href='../users/modif.php'><span class='btn'>>Mes informations</span></a>";
+echo "<a href='../users/modif.php'><span class='btn'>Mes informations</span></a>";
 ?>
-<br \>
-<br \>
-<a href="../users/logout.php">Déconnexion</a>
-<br \>
+<span></span>
+<a href="../users/logout.php"><span class='btn'>Déconnexion</span></a>
 <?PHP
 if (isset($_SESSION['admin']))
-echo "<a href='admin/admin.php'><span class='btn'>>Administration</span></a><br />";
+echo "<a class='btn' href='admin.php'>Administration</a>";
+echo "<br />";
+echo "<br />";
+echo "<br />";
+echo "<br />";
 }
 else
 {
 ?>
-<br />
 <a href='../index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"></a>
 <br />
 <?PHP

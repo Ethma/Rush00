@@ -81,6 +81,8 @@ if (isset($_SESSION['panier'])) {
 		echo "<input class='btn' type='submit' name='submit' value='Valider panier'>";
 		echo "<h4>/!\Définitif/!\</h4>";
 	}
+	else
+		echo "<div class='info'>Panier vide.</div><br />";
 }
 else
 	echo "<div class='info'>Panier vide.</div><br />";
