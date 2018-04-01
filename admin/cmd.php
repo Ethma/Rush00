@@ -20,3 +20,6 @@ while ($tmp = mysqli_fetch_assoc($result)) {
 	}
 }
 ?>
+<html>
+<h1>Liste des commandes utilisateur</h1>
+</html>

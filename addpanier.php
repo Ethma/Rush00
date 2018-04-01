@@ -18,7 +18,7 @@ if ($_POST['submit'] && $_POST['submit'] === "Ajouter au panier")
 		echo "Votre sélection a été ajoutée au panier.";
 	}
 	else
-		echo "pas ajoute.";
+		echo "Rien n'a été ajouté au panier.";
 }
 else
 	header("Location: index.php");
