@@ -60,8 +60,10 @@ echo "Panier vide.";
 ?>
 <form method="POST" action="val_cmd.php" >
 <input type='submit' name='submit' value='Sauvegarder panier'>
-<form method="POST" action="confirm.php" >
-<input type='submit' name='submit' value='Sauvegarder panier'>
+</form>
+<form method="POST" action="val_cmd.php" >
+<input type='submit' name='submit' value='Valider panier'>
+</form>
 <?PHP
 include("footer.php");
 ?>

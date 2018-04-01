@@ -47,6 +47,7 @@ else
 			echo "<OPTION>" . $tmp2['nom_categories'];
 		}
 	}
+	mysqli_free_result($result2);
 ?>
 </SELECT>
 <input type='submit' name='submit' value='Filtrer'>

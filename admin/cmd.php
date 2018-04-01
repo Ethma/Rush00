@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (!$_SESSION['admin'])
-	header("Location: index.php");
-include (dirname(__FILE__) . '../config/bdd.php');
+	header("Location: ../index.php");
+include __DIR__ . '/../config/bdd.php';
 $sql = "SELECT * FROM Commande";
 $result = mysqli_query($bdd, $sql);
 while ($tmp = mysqli_fetch_assoc($result)) {
