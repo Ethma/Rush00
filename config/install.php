@@ -2,7 +2,7 @@
 <?php
 if($_POST['submit'])
 {
-	$conn = mysqli_connect(null, 'root', 'bdroot', NULL, 0, '/Users/mabessir/goinfre/mamp/mysql/tmp/mysql.sock');
+	$conn = mysqli_connect(null, 'root', 'bdroot', NULL, 0, '/Users/vguillem/goinfre/mamp/mysql/tmp/mysql.sock');
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
@@ -13,7 +13,7 @@ if($_POST['submit'])
 		echo "Error creating database: " . mysqli_error($conn);
 	}
 	mysqli_close($conn);
-	$bdd = mysqli_connect(null, 'root', 'bdroot', 'shoop', 0, '/Users/mabessir/goinfre/mamp/mysql/tmp/mysql.sock');
+	$bdd = mysqli_connect(null, 'root', 'bdroot', 'shoop', 0, '/Users/vguillem/goinfre/mamp/mysql/tmp/mysql.sock');
 	if(!$bdd)
 		die("connection failed: " . mysqli_connect_error());
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(30) NOT NULL, lastname VARCHAR(30) NOT NULL, email VARCHAR(50), passwd VARCHAR(128))');
@@ -25,8 +25,6 @@ if($_POST['submit'])
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Categories (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, item_id INT(10) NOT NULL, nom_categories VARCHAR(30))');
 	mysqli_free_result($req);
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Commande (id INT(10) UNSIGNED, user_id INT(10) NOT NULL, item_id INT(10) NOT NULL, qte INT(10))');
-	mysqli_free_result($req);
-	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Panier (id INT(10) UNSIGNED, item_id INT(10) NOT NULL, qte INT(10))');
 	mysqli_free_result($req);
 	$sql = "INSERT INTO Item (nom, prix, description, image)
 		VALUES ('Blackwidow', '150', 'Razer BlackWidow Chroma V2 (2017) - Clavier Gaming Mécanique, Rétro-Éclairage RGB - Green Switch (Tactile & Clicky) - AZERTY-Layout', '5.196.225.53/img/razer-blackwidow.png');";

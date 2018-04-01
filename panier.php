@@ -72,14 +72,12 @@ if (isset($_SESSION['panier'])) {
 		mysqli_free_result($result);
 	}
 	echo "<br />Total :" . $total . "<br />";
+	echo "<form method='POST' action='confirm.php' >";
+	echo "<input type='submit' name='submit' value='Valider panier'>";
 }
 else
 echo "Panier vide.";
 ?>
-<form method="POST" action="val_cmd.php" >
-<input type='submit' name='submit' value='Sauvegarder panier'>
-<form method="POST" action="confirm.php" >
-<input type='submit' name='submit' value='Valider panier'>
 <?PHP
 include("footer.php");
 ?>
