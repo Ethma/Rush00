@@ -42,22 +42,22 @@ if($_POST['id'])
 				mysqli_query($bdd, $sql);
 			}
 		}
-		else if ($_POST['submit'] === 'Creer Utilisateur')
-		{
-			$firstname = mysqli_real_escape_string($bdd, $_POST['firstname']);
-			$lastname = mysqli_real_escape_string($bdd, $_POST['lastname']);
-			$mail = mysqli_real_escape_string($bdd, $_POST['email']);
-			$passwd = hash('whirlpool', $_POST['passwd']);
-			$req = "INSERT INTO Users (firstname, lastname, email, passwd) VALUES('" . $firstname . "', '" . $lastname . "', '" . $mail . "', '" .$passwd . "')";
-			mysqli_query($bdd, $req);
-		}
 	}
+}
+else if (isset($_POST['submit']) && $_POST['submit'] === 'Creer Utilisateur')
+{
+	$firstname = mysqli_real_escape_string($bdd, $_POST['firstname']);
+	$lastname = mysqli_real_escape_string($bdd, $_POST['lastname']);
+	$mail = mysqli_real_escape_string($bdd, $_POST['email']);
+	$passwd = hash('whirlpool', $_POST['passwd']);
+	$req = "INSERT INTO Users (firstname, lastname, email, passwd) VALUES('" . $firstname . "', '" . $lastname . "', '" . $mail . "', '" .$passwd . "')";
+	mysqli_query($bdd, $req);
 }
 echo "<form method='POST' action='modif_user.php' >";
 echo "Prenom :<input type='text' name='firstname' value=''><br />";
 echo "Nom :<input type='text' name='lastname' value=''><br />";
 echo "Email :<input type='text' name='email' value=''><br />";
-echo "mot de passe :<input type='text' name='passwd' value=''><br />";
+echo "mot de passe :<input type='password' name='passwd' value=''><br />";
 echo "<input type='submit' name='submit' value='Creer Utilisateur'>";
 echo "</form> <br />";
 $req = "SELECT firstname, lastname, email, id FROM Users";
@@ -67,7 +67,7 @@ echo "<form method='POST' action='modif_user.php' >";
 echo "Prenom :<input type='text' name='firstname' value='" . $tmp['firstname'] . "'><br />";
 echo "Nom :<input type='text' name='lastname' value='" . $tmp['lastname'] . "'><br />";
 echo "Email :<input type='text' name='email' value='" . $tmp['email'] . "'><br />";
-echo "mot de passe :<input type='text' name='passwd' value=''><br />";
+echo "mot de passe :<input type='password' name='passwd' value=''><br />";
 echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
 echo "<input type='submit' name='submit' value='Modifier Utilisateur'>";
 echo "</form> <br />";

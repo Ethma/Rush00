@@ -25,19 +25,19 @@ else if (isset($_POST['submit']) && isset($_POST['id']))
 		if (!(empty($_POST['prix'])))
 		{
 			$prix = floatval($_POST['prix']);
-			$sql = "UPDATE Users SET prix='" .$prix . "'WHERE id='" . $id . "'";
+			$sql = "UPDATE Item SET prix='" .$prix . "'WHERE id='" . $id . "'";
 			mysqli_query($bdd, $sql);
 		}
 		if (!(empty($_POST['description'])))
 		{
 			$description = mysqli_real_escape_string($bdd, $_POST['description']);
-			$sql = "UPDATE Users SET description='" .$description . "'WHERE id='" . $id . "'";
+			$sql = "UPDATE Item SET description='" .$description . "'WHERE id='" . $id . "'";
 			mysqli_query($bdd, $sql);
 		}
 		if (!(empty($_POST['image'])))
 		{
 			$image = mysqli_real_escape_string($bdd, $_POST['image']);
-			$sql = "UPDATE Users SET image='" .$image . "'WHERE id='" . $id . "'";
+			$sql = "UPDATE Item SET image='" .$image . "'WHERE id='" . $id . "'";
 			mysqli_query($bdd, $sql);
 		}
 	}
