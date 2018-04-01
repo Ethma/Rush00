@@ -3,14 +3,14 @@
 <link rel="stylesheet" type="text/css" href="style/touch.css">
 <link rel="stylesheet" type="text/css" href="style/footer.css">
 </head>
-<body class="body">
+<body style="width: 900px;margin-left:30%;">
 <header>
 <?php
 session_start();
 if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
 {
-echo '<a href="http://127.0.0.1:8083/00/index.php"><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a /> <br \>';
-echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>";
+echo '<a href="index.php"><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a /> <br \>';
+echo "<a href='users/modif.php'>" ."<span class=btn>>Mon compte</span></a><br />";
 ?>
 <br \>
 <br \>
@@ -20,17 +20,29 @@ echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>"
 <br />
 <a href="panier.php"><span class='btn'>>Mettre à jour mon panier</span></a>
 <br />
+<br />
 <?PHP
 if (isset($_SESSION['admin']))
-echo "<a href='admin/admin.php'>Administration</a>";
+echo "<br /><a href='admin/admin.php'><span class='btn'>>Administration</span></a><br /><br />";
 }
 else
 {
 ?>
 <a href='index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
 <br />
-<a href="users/create.php">Inscription</a>
-<a href="users/login.php">Connexion</a>
+<br />
+<br />
+<a href="users/create.php"> <span class="btn">>Inscription</span></a>
+<br />
+<br />
+<br />
+<a href="users/login.php"><span class="btn">>Connexion</span></a>
+<br />
+<br />
+<br />
+<a href="panier.php"><span class="btn">>Mon Panier</span><br /></a>
+<br />
+<br />
 <?PHP
 }
 ?>
@@ -55,7 +67,7 @@ if (isset($_SESSION['panier'])) {
 			echo "Description : " . $tmp['description'];
 			echo "<br />quantite : " . $_SESSION['panier'][$k];
 			echo "<br />.......................<br />";
-			echo "<a href='panier.php?id=" . $k . "'>Vider mon panier</a>";
+			echo "<br /><a href='panier.php?id=" . $k . "'><span class='btn'>>Retirer du panier</span></a><br /><br />";
 		}
 		mysqli_free_result($result);
 	}

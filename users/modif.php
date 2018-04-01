@@ -36,7 +36,7 @@ if (isset($_POST['submit']) && $_POST['submit'] === "OK")
 		$sql = "UPDATE Users SET passwd='" . $newpw . "' WHERE id='" . $_SESSION['userid'] . "'";
 		$result = mysqli_query($bdd, $sql);
 	}
-	echo "compte mis a jour.";
+	echo "Compte mis à jour.";
 }
 ?>
 <html><body>

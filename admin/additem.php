@@ -58,6 +58,10 @@ else if (isset($_POST['submit']) && isset($_POST['id']))
 	}
 ?>
 <html><body>
+<?PHP
+if (isset($_SESSION['admin']))
+	echo "<br /><br /><a href='admin/admin.php'><span class='btn'>Administration</span></a><br /><br />";
+?>
 <form method="POST" action="additem.php" >
 Nom : <input type='text' name='nom' value=''/>
 <br />
@@ -76,10 +80,10 @@ $req = "SELECT id, nom, prix, description, image FROM Item";
 $res = mysqli_query($bdd, $req);
 while ($tmp = mysqli_fetch_assoc($res)) {
 echo "<form method='POST' action='additem.php' >";
-echo "Prenom :<input type='text' name='nom' value='" . $tmp['nom'] . "'><br />";
-echo "Nom :<input type='text' name='prix' value='" . $tmp['prix'] . "'><br />";
-echo "Email :<input type='text' name='description' value='" . $tmp['description'] . "'><br />";
-echo "Email :<input type='text' name='image' value='" . $tmp['image'] . "'><br />";
+echo "Nom du produit :<input type='text' name='nom' value='" . $tmp['nom'] . "'><br />";
+echo "Prix de vente :<input type='text' name='prix' value='" . $tmp['prix'] . "'><br />";
+echo "Description du produit :<input type='text' name='description' value='" . $tmp['description'] . "'><br />";
+echo "Image (url) :<input type='text' name='image' value='" . $tmp['image'] . "'><br />";
 echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
 echo "<input type='submit' name='submit' value='Modifier Item'>";
 echo "</form> <br />";
