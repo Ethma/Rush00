@@ -3,6 +3,12 @@ include __DIR__ . '/../config/bdd.php';
 session_start();
 if ($_SESSION['loged'])
 {
+if (isset($_POST['submit']) && $_POST['submit'] === "Supprimer")
+{
+	$req = "DELETE FROM Users WHERE id='" . $_SESSION['userid'] . "'";
+	mysqli_query($bdd, $req);
+	header("Location: logout.php");
+}
 if (isset($_POST['oldpw']) && isset($_POST['newpw']) && isset($_POST['submit']) && $_POST['submit'] === "OK")
 {
 	$passwd = hash('whirlpool', $_POST['newpw']);
@@ -31,9 +37,12 @@ Nouveau mot de passe: <input type='password' name='newpw' value=''/>
 <br />
 <input type='submit' name='submit' value='OK'>
 </form>
+<form method="POST" action="modif.php" >
+<input type='submit' name='submit' value='Supprimer'>
+</form>
 </html></body>
 <?PHP
 }
 else
-	header("Location: index.php");
+	header("Location: ../index.php");
 ?>

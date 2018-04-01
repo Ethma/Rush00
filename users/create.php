@@ -1,35 +1,3 @@
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="../style/touch.css">
-<link rel="stylesheet" type="text/css" href="../style/footer.css">
-</head>
-<body class="body">
-<header>
-<?php
-session_start();
-if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
-{
-echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>";
-?>
-<a href="panier.php">  Voir panier</a>
-<a href="users/logout.php">Deconnexion</a>
-<?PHP
-if (isset($_SESSION['admin']))
-echo "<a href='admin/admin.php'>administration</a>";
-}
-else
-{
-?>
-<br />
-<a href='/00/index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
-<br />
-<a href="./login.php">Connexion</a>
-<a href="../panier.php">Voir panier</a>
-<?PHP
-}
-?>
-</header>
-</html>
 <?PHP
 include __DIR__ . '/../config/bdd.php';
 if (!(empty($_POST['firstname'])) && !(empty($_POST['passwd'])) && !(empty($_POST['lastname'])) && !(empty($_POST['mail'])) && !(empty($_POST['submit'])) && $_POST['submit'] === "OK")
@@ -68,8 +36,6 @@ Adresse mail: <input type='text' name='mail' value=''/>
 Mot de passe: <input type='password' name='passwd' value=''/>
 <br />
 <input type='submit' name='submit' value='OK'>
-<br /> 
-<a href='../index.php'>Accueil<a/>
 </form>
 </body>
 </html>

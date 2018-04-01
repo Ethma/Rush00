@@ -1,6 +1,5 @@
-<footer><div class="footer">
-	<div class="footer_content">
-<a href='apropos.php'>A propos<a />
+<footer>
+<a href="index.php">Accueil</a>
 </footer>
 </body>
 </html>

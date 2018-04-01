@@ -1,32 +1,39 @@
 <?php
 if($_POST['submit'])
 {
-	$conn = mysqli_connect(null, 'root', 'bdroot', NULL, 0, '/Users/mabessir/goinfre/mamp/mysql/tmp/mysql.sock');
+	$conn = mysqli_connect(null, 'root', 'bdroot', NULL, 0, '/Users/vguillem/goinfre/mamp/mysql/tmp/mysql.sock');
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
 	$sql = "CREATE DATABASE IF NOT EXISTS shoop";
 	if (mysqli_query($conn, $sql)) {
-		echo "Database created successfully";
+		echo "Database created successfully\n";
 	} else {
 		echo "Error creating database: " . mysqli_error($conn);
 	}
 	mysqli_close($conn);
-	$bdd = mysqli_connect(null, 'root', 'bdroot', 'shoop', 0, '/Users/mabessir/goinfre/mamp/mysql/tmp/mysql.sock');
+
+	$bdd = mysqli_connect(null, 'root', 'bdroot', 'shoop', 0, '/Users/vguillem/goinfre/mamp/mysql/tmp/mysql.sock');
 	if(!$bdd)
 		die("connection failed: " . mysqli_connect_error());
-	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30) NOT NULL, email VARCHAR(50), passwd VARCHAR(128))');
+	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(30) NOT NULL, lastname VARCHAR(30) NOT NULL, email VARCHAR(50), passwd VARCHAR(128))');
 	mysqli_free_result($req);
+
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Item (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(30) NOT NULL, prix float NOT NULL, description VARCHAR(255), image varchar(255) DEFAULT NULL)');
 	mysqli_free_result($req);
-	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Admin (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, Users_id INT(6) NOT NULL)');
+
+	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Admin (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, users_id INT(6) NOT NULL)');
 	mysqli_free_result($req);
+
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Categories (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, item_id INT(10) NOT NULL, nom_categories VARCHAR(30))');
 	mysqli_free_result($req);
+
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Commande (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, user_id INT(10) NOT NULL)');
 	mysqli_free_result($req);
+
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Panier (id INT(10) UNSIGNED, item_id INT(10) NOT NULL, qte INT(10))');
 	mysqli_free_result($req);
+
 	$sql = "INSERT INTO Item (nom, prix, description, image)
 		VALUES ('Blackwidow', '150', 'Razer BlackWidow Chroma V2 (2017) - Clavier Gaming Mécanique, Rétro-Éclairage RGB - Green Switch (Tactile & Clicky) - AZERTY-Layout', '5.196.225.53/img/razer-blackwidow.png');";
 	$sql .= "INSERT INTO Item (nom, prix, description, image)
@@ -46,51 +53,59 @@ if($_POST['submit'])
 	$sql .= "INSERT INTO Item (nom, prix, description, image)
 		VALUES ('AIM', '25', 'KLIM AIM Chroma RGB Gaming Mouse - NEW - PRECISE - Wired USB - Adjustable 500 to 7000 DPI - Programmable Buttons - Comfortable for all hand sizes - Ambidextrous Excellent grip Gamer Gaming', '5.196.225.53/img/klim-aim.png');";
 	$sql .= "INSERT INTO Item (nom, prix, description, image)
-		VALUES ('Electra-v2', '60', 'Le casque-micro Razer Electra v2 est destiné à ceux qui jouent tout le temps et partout : connectez-le simplement au port Jack audio 3.5 mm de votre PC, de votre ordinateur portable, de votre tablette ou de votre smartphone!', '5.196.225.53/img/razer-tiamat.png');";
-	$cat = "INSERT INTO Categories (item_id, nom_categories)
+		VALUES ('Electra-v2', '60', 'Le casque-micro Razer Electra v2 est destiné à ceux qui jouent tout le temps et partout : connectez-le simplement au port Jack audio 3.5 mm de votre PC, de votre ordinateur portable, de votre tablette ou de votre smartphone', '5.196.225.53/img/razer-tiamat.png');";
+
+
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('1', 'clavier');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('2', 'souris');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('3', 'souris');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('4', 'casque');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('5', 'casque');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('6', 'casque');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('7', 'clavier');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('8', 'clavier');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('9', 'souris');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('10', 'casque');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('1', 'razer');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('2', 'razer');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('3', 'Klim');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('4', 'Klim');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('5', 'Klim');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('6', 'Klim');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('7', 'Klim');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('8', 'Klim');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('9', 'Klim');";
-	$cat .= "INSERT INTO Categories (item_id, nom_categories)
+	$sql .= "INSERT INTO Categories (item_id, nom_categories)
 		VALUES ('10', 'razer');";
-	if (mysqli_multi_query($bdd, $cat))
-		echo "Categories ok \n";
-	else
-		echo "Error: " . $cat . "<br>" . mysqli_error($bdd);
+	$sql .= "INSERT INTO Users (firstname, lastname, email, passwd)
+		VALUES ('admin', 'admin', 'admin', '6a4e012bd9583858a5a6fa15f58bd86a25af266d3a4344f1ec2018b778f29ba83be86eb45e6dc204e11276f4a99eff4e2144fbe15e756c2c88e999649aae7d94');";
+	$sql .= "INSERT INTO Admin (users_id)
+		VALUES ('1');";
+
+	if (mysqli_multi_query($bdd, $sql)) {
+		    echo "insert ok \n";
+	} else {
+		    echo "Error: " . $sql . "<br>" . mysqli_error($bdd);
+	}
 }
 else
 {

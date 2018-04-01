@@ -1,7 +1,7 @@
 <?php
 include("header.php");
 include __DIR__ . '/config/bdd.php';
-if ($_POST['submit'] && $_SESSION['loged'])
+if (isset($_POST['submit']) && isset($_SESSION['loged']))
 {
 	if (!isset($_SESSION['cmd']))
 	{
@@ -17,10 +17,12 @@ if ($_POST['submit'] && $_SESSION['loged'])
 		$sql = "DELETE FROM Panier WHERE id='" . $id . "'";
 		$result2 = mysqli_query($bdd, $sql);
 	}
-	foreach($_SESSION['panier'] as $k => $v)
-	{
-		$sql = "INSERT INTO Panier (id, item_id, qte) VALUE('" . $id . "', '" . $k . "', '" . $v . "')";
-		$result = mysqli_query($bdd, $sql);
+	if (isset($_SESSION['panier'])){
+		foreach($_SESSION['panier'] as $k => $v)
+		{
+			$sql = "INSERT INTO Panier (id, item_id, qte) VALUE('" . $id . "', '" . $k . "', '" . $v . "')";
+			$result = mysqli_query($bdd, $sql);
+		}
 	}
 }
 else
