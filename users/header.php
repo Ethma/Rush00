@@ -9,11 +9,11 @@
 if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
 {
 echo '<a href="../index.php"><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a /> <br \>';
-echo "<a href='users/modif.php'>" ."<span class=btn>>Mon compte</span></a>";
+echo "<a href='modif.php'>" ."<span class=btn>>Mon compte</span></a>";
 ?>
 <br \>
 <br \>
-<a href="users/logout.php">Déconnexion</a>
+<a href="logout.php">Déconnexion</a>
 <?PHP
 if (isset($_SESSION['admin']))
 echo "<a href='admin/admin.php'><span class='btn'>>Administration</span></a><br />";

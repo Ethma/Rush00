@@ -68,9 +68,9 @@ else
 	}
 	mysqli_free_result($result);
 	echo "<img style='height:300' src='http://" . $img . "'><br />";
-	echo "Nom : " . $nom . "<br />";
+	echo "<p class='descrip'>Nom : " . $nom . "<br />";
 	echo "prix : " . $prix . "<br />";
-	echo "Description : " . $description;
+	echo "Description : " . $description . "</p>";
 	?>
 <form method="POST" action=addpanier.php >
 <input type="text" name="qte" value="">

@@ -39,7 +39,16 @@ if (isset($_POST['submit']) && $_POST['submit'] === "OK")
 	echo "Compte mis à jour.";
 }
 ?>
-<html><body>
+<html>
+<body>
+<a href="../panier.php"><span class="btn">>Accéder au panier</span></a>
+<?PHP
+if (isset($_SESSION['admin']))
+	echo "<a href='../admin/admin.php'><span class='btn'>>Administration</span></a>";
+?>
+<a href="logout.php"<span class="btn">>Déconnexion</span></a>
+<br /><br />
+<div class='additem con'>
 <form method="POST" action="modif.php" >
 Nom :<input type='text' name='firstname' value=''/>
 <br />
@@ -54,7 +63,10 @@ Nouveau mot de passe: <input type='password' name='newpw' value=''/>
 <form method="POST" action="modif.php" >
 <input type='submit' name='submit' value='Supprimer'>
 </form>
-</html></body>
+</div>
+<br />
+</body>
+</html>
 <?PHP
 }
 else

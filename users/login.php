@@ -10,6 +10,7 @@ if (isset($_POST['login']) && isset($_POST['passwd']) && isset($_POST['submit'])
 if (isset($_POST['submit']))
 	echo "Login Error <br />";
 echo "<html><body>";
+echo "<div class='con additem'>";
 echo '<form method="post" action=login.php >';
 echo "Prénom: <input type='text' name='login' value=''/>";
 echo "<br />";

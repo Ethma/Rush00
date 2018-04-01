@@ -2,9 +2,10 @@
 include("header.php");
 session_start();
 include __DIR__ . '/../config/bdd.php';
-if (!$_SESSION['admin'])
+echo "<br /><a href='../admin/admin.php'><span class='btn'>Administration</span></a><br /><br />";
+if (!isset($_SESSION['admin']))
 	header("Location: index.php");
-if($_POST['id'])
+if(isset($_POST['id']))
 {
 	if (isset($_POST['submit']))
 	{
@@ -53,21 +54,25 @@ else if (isset($_POST['submit']) && $_POST['submit'] === 'Creer Utilisateur')
 	$req = "INSERT INTO Users (firstname, lastname, email, passwd) VALUES('" . $firstname . "', '" . $lastname . "', '" . $mail . "', '" .$passwd . "')";
 	mysqli_query($bdd, $req);
 }
+echo "<div class='additem'>";
 echo "<form method='POST' action='modif_user.php' >";
-echo "Prenom :<input type='text' name='firstname' value=''><br />";
+echo "Prénom :<input type='text' name='firstname' value=''><br />";
 echo "Nom :<input type='text' name='lastname' value=''><br />";
 echo "Email :<input type='text' name='email' value=''><br />";
-echo "mot de passe :<input type='password' name='passwd' value=''><br />";
+echo "Mot de passe :<input type='password' name='passwd' value=''><br />";
 echo "<input type='submit' name='submit' value='Creer Utilisateur'>";
 echo "</form> <br />";
+echo "</div>";
+echo "<br />";
 $req = "SELECT firstname, lastname, email, id FROM Users";
 $res = mysqli_query($bdd, $req);
 while ($tmp = mysqli_fetch_assoc($res)) {
+echo "<div class='additem'>";
 echo "<form method='POST' action='modif_user.php' >";
-echo "Prenom :<input type='text' name='firstname' value='" . $tmp['firstname'] . "'><br />";
+echo "Prénom :<input type='text' name='firstname' value='" . $tmp['firstname'] . "'><br />";
 echo "Nom :<input type='text' name='lastname' value='" . $tmp['lastname'] . "'><br />";
 echo "Email :<input type='text' name='email' value='" . $tmp['email'] . "'><br />";
-echo "mot de passe :<input type='password' name='passwd' value=''><br />";
+echo "Mot de passe :<input type='password' name='passwd' value=''><br />";
 echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
 echo "<input type='submit' name='submit' value='Modifier Utilisateur'>";
 echo "</form> <br />";
@@ -75,6 +80,8 @@ echo "<form method='POST' action='modif_user.php' >";
 echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
 echo "<input type='submit' name='submit' value='Suprimer Utilisateur'>";
 echo "</form> <br />";
+echo "</div>";
+echo "<br />";
 }
 mysqli_free_result($res);
 include("footer.php");

@@ -2,7 +2,8 @@
 include("header.php");
 session_start();
 include __DIR__ . '/../config/bdd.php';
-if (!$_SESSION['admin'])
+echo "<br /><a href='../admin/admin.php'><span class='btn'>Administration</span></a><br /><br />";
+if (!isset($_SESSION['admin']))
 	header("Location: index.php");
 else if (isset($_POST['id']))
 {
@@ -16,23 +17,25 @@ else if (isset($_GET['id']))
 	$id = mysqli_real_escape_string($bdd, $_GET['id']);
 	$req = "SELECT item_id, qte FROM Commande WHERE id='" . $id . "'";
 	$res = mysqli_query($bdd, $req);
+	echo "<div class='additem'>";
 	while ($t = mysqli_fetch_assoc($res)) {
 		$sql = "SELECT nom, prix, description, image FROM Item WHERE id='" . $t['item_id'] . "'";
 		$result = mysqli_query($bdd, $sql);
 		while ($tmp = mysqli_fetch_assoc($result)) {
 			$total += ($tmp['prix'] * $t['qte']);
 			echo "Nom : " . $tmp['nom'] . "<br />";
-			echo "prix : " . $tmp['prix'] . "<br />";
-			echo "<br />quantite : " . $t['qte'];
-			echo "<br />.......................<br />";
+			echo "prix : " . $tmp['prix'] . "€<br />";
+			echo "Quantité : " . $t['qte']."<br /><br />";
 		}
 		mysqli_free_result($result);
-	echo "<br />Total :" . $total . "<br />";
 	}
+	echo "<br /><h3>Total: " . $total . "€</h3><br />";
+	echo "</div>";
 ?>
 <form method="POST" action="admin_cmd.php" >
 <?php echo "<input type='hidden' name='id' value='" .  $_GET['id'] . "'>";?>
-<input type='submit' name='submit' value='Commande traitee'>
+<br />
+<input type='submit' class='btn' name='submit' value='Commande traitee'>
 </form>
 <?PHP
 }

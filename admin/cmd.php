@@ -1,6 +1,7 @@
 <?php
 include("header.php");
 session_start();
+echo "<br /><a href='../admin/admin.php'><span class='btn'>Administration</span></a><br /><br />";
 if (!$_SESSION['admin'])
 	header("Location: ../index.php");
 include __DIR__ . '/../config/bdd.php';
@@ -16,7 +17,7 @@ while ($tmp = mysqli_fetch_assoc($result)) {
 	}
 	if (!(in_array($tmp['id'], $cmd)))
 	{
-		echo "<a href='admin_cmd.php?id=" . $tmp['id'] . "'>" . $user . "</a><br />";
+		echo "<a class='btn' href='admin_cmd.php?id=" . $tmp['id'] . "'>" . $user . "</a><br /><br /><br />";
 		array_push($cmd, $tmp['id']);
 	}
 }

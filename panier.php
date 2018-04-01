@@ -64,24 +64,26 @@ if (isset($_SESSION['panier'])) {
 		$result = mysqli_query($bdd, $sql);
 		while ($tmp = mysqli_fetch_assoc($result)) {
 			$total += ($tmp['prix'] * $v);
+			echo "<div class='additem'>";
 			echo "Nom : " . $tmp['nom'] . "<br />";
-			echo "prix : " . $tmp['prix'] . "<br />";
-			echo "Description : " . $tmp['description'];
-			echo "<br />quantite : " . $_SESSION['panier'][$k];
-			echo "<br />.......................<br />";
+			echo "Prix : " . $tmp['prix']."€";
+			echo "<br />Quantité : " . $_SESSION['panier'][$k]."<br />";
 			echo "<br /><a href='panier.php?id=" . $k . "'><span class='btn'>>Retirer du panier</span></a><br /><br />";
+			echo "</div>";
+			echo "<br />";
 		}
 		mysqli_free_result($result);
 	}
 	if ($veri === 1)
 	{
-		echo "<br />Total :" . $total . "<br />";
-		echo "<form method='POST' action='val_cmd.php' >";
-		echo "<input type='submit' name='submit' value='Valider panier'>";
+		echo "<div class='info'><br />Total :" . $total . "€<br /></div>";
+		echo "<form method='POST' action='val_cmd.php'><br />";
+		echo "<input class='btn' type='submit' name='submit' value='Valider panier'>";
+		echo "<h4>/!\Définitif/!\</h4>";
 	}
 }
 else
-	echo "Panier vide.";
+	echo "<div class='info'>Panier vide.</div><br />";
 ?>
 <?PHP
 include("footer.php");

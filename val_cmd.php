@@ -24,6 +24,6 @@ if (isset($_POST['submit']) && isset($_SESSION['loged']))
 	}
 }
 else
-	echo "Connectez-vous pour valider votre panier.";
+	echo "<br /><div class='info'>Connectez-vous pour valider votre panier.</div>";
 include("footer.php");
 ?>

@@ -80,3 +80,33 @@ a
 	position:relative;
 	top:1px;
 }
+.descrip
+{
+	background-color: white;
+}
+.additem
+{
+	padding-left: 50px;
+	padding-top: 15px;
+	background-color: rgba(9, 100, 122, 0.6);
+	border-radius: 10px;
+	padding-bottom: 5px;
+}
+.con
+{
+	width: 450px;
+}
+.info
+{
+	border-radius: 10px;
+	background-color: rgba(160, 28, 10, 0.726);
+	width : 450px;
+	text-align: center;
+}
+.pan
+{
+	text-align: center;
+	padding-bottom: 5px;
+	border-radius: 10px;
+	background-color: rgba(9, 100, 122, 0.6);
+}

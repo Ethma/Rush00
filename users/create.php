@@ -53,6 +53,7 @@ else
 {
 	if (isset($_POST['submit']) && $_POST['submit'] === "OK")
 	{
+		echo "<div class='info'>";
 		if (empty($_POST['firstname']))
 			echo "Champ Prénom manquant. <br />";
 		if (empty($_POST['lastname']))
@@ -61,9 +62,12 @@ else
 			echo "Champ Mail manquant. <br />";
 		if (empty($_POST['passwd']))
 			echo "Champ mot de passe manquant. <br />";
+		echo "</div>";
+		echo "<br />";
 	}
 ?>
 <html><body>
+<div class='con additem'>
 <form method="POST" action=create.php >
 Prénom: <input type='text' name='firstname' value=''/>
 <br />
@@ -76,6 +80,7 @@ Mot de passe: <input type='password' name='passwd' value=''/>
 <input type='submit' name='submit' value="OK">
 <br /> 
 </form>
+</div>
 </body>
 </html>
 <?php
