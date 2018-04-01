@@ -3,6 +3,7 @@ session_start();
 if (!$_SESSION['admin'])
 	header("Location: ../index.php");
 include __DIR__ . '/../config/bdd.php';
+$cmd = array();
 $sql = "SELECT * FROM Commande";
 $result = mysqli_query($bdd, $sql);
 while ($tmp = mysqli_fetch_assoc($result)) {
@@ -11,6 +12,10 @@ while ($tmp = mysqli_fetch_assoc($result)) {
 	while ($tmp2 = mysqli_fetch_assoc($result2)) {
 		$user = $tmp2['firstname'];
 	}
-	echo "<a href='admin/admin_cmd.php?id=" . $tmp['id'] . "'>" . $user . "</a><br />";
+	if (!(in_array($tmp['id'], $cmd)))
+	{
+		echo "<a href='admin_cmd.php?id=" . $tmp['id'] . "'>" . $user . "</a><br />";
+		array_push($cmd, $tmp['id']);
+	}
 }
 ?>
