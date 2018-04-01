@@ -35,6 +35,12 @@ else
 </header>
 <?php
 include __DIR__ . '/config/bdd.php';
+if (isset($_GET['itad']))
+{
+	$itpad = mysqli_real_escape_string($bdd, $_POST['itpad']);
+	$req = "DELETE FROM Categories WHERE id='" . $itpad . "'";
+	mysqli_query($bdd, $req);
+}
 if (!$_GET['p'])
 	header("Location: index.php");
 else
@@ -71,6 +77,13 @@ if (isset($_SESSION['admin']))
 	<?php echo "<input type='hidden' name='id' value= '" . $id . "'>";?>
 	<input type='submit' name='submit' value='ajouter une categorie'>
 </form>
-<?php }
+<?php
+	$sql2 = "SELECT id, nom_categories FROM Categories WHERE item_id='" . $id . "'";
+	$result2 = mysqli_query($bdd, $sql2);
+	while ($tmp2 = mysqli_fetch_assoc($result2)) {
+		echo "<a href=produit.php?itad=" . $tmp2['id'] . ">supprimer " . $tmp2['nom_categories'] . "</a><br />";
+	}
+	mysqli_free_result($result2);
+}
 include("footer.php");
 ?>
