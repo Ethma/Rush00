@@ -21,10 +21,16 @@ else
 {
 ?>
 <br />
-<a href='/00/index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
+<a href='../index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
 <br />
-<a href="./login.php">Connexion</a>
-<a href="../panier.php">Voir panier</a>
+<a href="./login.php"><span class='btn'>Connexion</span></a>
+<br />
+<br />
+<br />
+<a href="../panier.php"><span class='btn'>Accéder au panier</span></a>
+<br />
+<br />
+<br />
 <?PHP
 }
 ?>
@@ -67,9 +73,8 @@ Adresse mail: <input type='text' name='mail' value=''/>
 <br />
 Mot de passe: <input type='password' name='passwd' value=''/>
 <br />
-<input type='submit' name='submit' value='OK'>
+<input type='submit' name='submit' value="Valider l'inscrition">
 <br /> 
-<a href='../index.php'>Accueil<a/>
 </form>
 </body>
 </html>

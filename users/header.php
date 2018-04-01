@@ -13,7 +13,7 @@ echo "<a href='users/modif.php'>" ."<span class=btn>>Mon compte</span></a>";
 ?>
 <br \>
 <br \>
-<a href="users/logout.php">Deconnexion</a>
+<a href="users/logout.php">Déconnexion</a>
 <?PHP
 if (isset($_SESSION['admin']))
 echo "<a href='admin/admin.php'><span class='btn'>>Administration</span></a><br />";
