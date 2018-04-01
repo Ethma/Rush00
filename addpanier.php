@@ -14,7 +14,8 @@ if ($_POST['submit'] && $_POST['submit'] === "Ajouter au panier")
 		if (!isset($_SESSION['panier'][$_POST['id']]))
 			$_SESSION['panier'][$_POST['id']] = 0;
 		$_SESSION['panier'][$_POST['id']] += $qte;
-		echo "Votre Selection a ete ajoute au panier.";
+		echo "<br />";
+		echo "Votre sélection a été ajoutée au panier.";
 	}
 	else
 		echo "pas ajoute.";

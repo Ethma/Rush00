@@ -1,4 +1,5 @@
 <?PHP
+include("header.php");
 session_start();
 function auth($login, $passwd, $bdd)
 {

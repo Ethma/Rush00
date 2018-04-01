@@ -9,19 +9,25 @@
 session_start();
 if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
 {
+echo '<a href="http://127.0.0.1:8083/00/index.php"><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a /> <br \>';
 echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>";
 ?>
-<a href="panier.php">  Voir panier</a>
-<a href="users/logout.php">Deconnexion</a>
+<br \>
+<br \>
+<a href="users/logout.php"><span class='btn'>>Déconnexion</span></a>
+<br />
+<br />
+<br />
+<a href="panier.php"><span class='btn'>>Mettre à jour mon panier</span></a>
+<br />
 <?PHP
 if (isset($_SESSION['admin']))
-echo "<a href='admin/admin.php'>administration</a>";
+echo "<a href='admin/admin.php'>Administration</a>";
 }
 else
 {
 ?>
-<br />
-<a href='/00/index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
+<a href='index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
 <br />
 <a href="users/create.php">Inscription</a>
 <a href="users/login.php">Connexion</a>
@@ -49,7 +55,7 @@ if (isset($_SESSION['panier'])) {
 			echo "Description : " . $tmp['description'];
 			echo "<br />quantite : " . $_SESSION['panier'][$k];
 			echo "<br />.......................<br />";
-			echo "<a href='panier.php?id=" . $k . "'>Retirer du panier</a>";
+			echo "<a href='panier.php?id=" . $k . "'>Vider mon panier</a>";
 		}
 		mysqli_free_result($result);
 	}
@@ -60,10 +66,8 @@ echo "Panier vide.";
 ?>
 <form method="POST" action="val_cmd.php" >
 <input type='submit' name='submit' value='Sauvegarder panier'>
-</form>
-<form method="POST" action="val_cmd.php" >
+<form method="POST" action="confirm.php" >
 <input type='submit' name='submit' value='Valider panier'>
-</form>
 <?PHP
 include("footer.php");
 ?>

@@ -1,4 +1,5 @@
 <?PHP
+include("header.php");
 include __DIR__ . '/../config/bdd.php';
 if ($_POST['nom'] && $_POST['prix'] && $_POST['description'] && $_POST['submit'] && $_POST['submit'] === "OK")
 {

@@ -1,4 +1,5 @@
 <?php
+include("header.php");
 session_start();
 include __DIR__ . '/../config/bdd.php';
 if (!$_SESSION['admin'])
@@ -45,15 +46,14 @@ if($_POST['id'])
 		{
 			$firstname = mysqli_real_escape_string($bdd, $_POST['firstname']);
 			$lastname = mysqli_real_escape_string($bdd, $_POST['lastname']);
-			$mail = mysqli_real_escape_string($bdd, $_POST['mail']);
+			$mail = mysqli_real_escape_string($bdd, $_POST['email']);
 			$passwd = hash('whirlpool', $_POST['passwd']);
 			$req = "INSERT INTO Users (firstname, lastname, email, passwd) VALUES('" . $firstname . "', '" . $lastname . "', '" . $mail . "', '" .$passwd . "')";
-			$result = mysqli_query($bdd, $req);
-			mysqli_free_result($result);
+			mysqli_query($bdd, $req);
 		}
 	}
 }
-echo "<form method='POST' action='../users/create.php' >";
+echo "<form method='POST' action='modif_user.php' >";
 echo "Prenom :<input type='text' name='firstname' value=''><br />";
 echo "Nom :<input type='text' name='lastname' value=''><br />";
 echo "Email :<input type='text' name='email' value=''><br />";

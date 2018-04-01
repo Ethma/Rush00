@@ -1,4 +1,5 @@
 <?PHP
+include("header.php");
 include __DIR__ . '/../config/bdd.php';
 session_start();
 if ($_SESSION['loged'])
@@ -24,7 +25,7 @@ if (isset($_POST['oldpw']) && isset($_POST['newpw']) && isset($_POST['submit']) 
 			header("Location: ../index.php");
 		}
 	}
-	$error = "Ancien pass incorrect.";
+	$error = "Ancien mot de passe incorrect.";
 	mysqli_free_result($result);
 }
 ?>
