@@ -12,35 +12,34 @@ if (isset($_POST['submit']) && $_POST['submit'] === "Supprimer")
 }
 if (isset($_POST['submit']) && $_POST['submit'] === "OK")
 {
-	if (isset($_POST['firstname']))
+	if (!empty($_POST['firstname']))
 	{
 		$firstname = mysqli_real_escape_string($bdd, $_POST['firstname']);
 		$sql = "UPDATE Users SET firstname='" . $firstname . "' WHERE id='" . $_SESSION['userid'] . "'";
 		$result = mysqli_query($bdd, $sql);
 	}
-	if (isset($_POST['lastname']))
+	if (!empty($_POST['lastname']))
 	{
 		$lastname = mysqli_real_escape_string($bdd, $_POST['lastname']);
 		$sql = "UPDATE Users SET lastname='" . $lastname . "' WHERE id='" . $_SESSION['userid'] . "'";
 		$result = mysqli_query($bdd, $sql);
 	}
-	if (isset($_POST['email']))
+	if (!empty($_POST['email']))
 	{
 		$email = mysqli_real_escape_string($bdd, $_POST['email']);
 		$sql = "UPDATE Users SET email='" . $email . "' WHERE id='" . $_SESSION['userid'] . "'";
 		$result = mysqli_query($bdd, $sql);
 	}
-	if (isset($_POST['newpw']))
+	if (!empty($_POST['newpw']))
 	{
-		$passwd = hash('whirlpool', $_POST['newpw']);
-		$sql = "UPDATE Users SET password='" . $newpw . "' WHERE id='" . $_SESSION['userid'] . "'";
+		$newpw = hash('whirlpool', $_POST['newpw']);
+		$sql = "UPDATE Users SET passwd='" . $newpw . "' WHERE id='" . $_SESSION['userid'] . "'";
 		$result = mysqli_query($bdd, $sql);
 	}
 	echo "compte mis a jour.";
 }
 ?>
 <html><body>
-<?php if (!(empty($error))) {echo $error;}?>
 <form method="POST" action="modif.php" >
 Nom :<input type='text' name='firstname' value=''/>
 <br />

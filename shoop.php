@@ -51,6 +51,7 @@ else
 ?>
 </SELECT>
 <input type='submit' name='submit' value='Filtrer'>
+</form>
 <?PHP
 ?>
 <?PHP
