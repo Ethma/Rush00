@@ -1,0 +1,81 @@
+<?php
+include("header.php");
+session_start();
+include __DIR__ . '/../config/bdd.php';
+if (!$_SESSION['admin'])
+	header("Location: index.php");
+if($_POST['id'])
+{
+	if (isset($_POST['submit']))
+	{
+		$id = mysqli_real_escape_string($bdd, $_POST['id']);
+		if ($_POST['submit'] === 'Suprimer Utilisateur')
+		{
+			$sql = "DELETE FROM Users WHERE id='" . $_POST['id'] . "'";
+			$result = mysqli_query($bdd, $sql);
+			mysqli_free_result($result);
+		}
+		else if ($_POST['submit'] === 'Modifier Utilisateur')
+		{
+			if (!(empty($_POST['firstname'])))
+			{
+				$firstname = mysqli_real_escape_string($bdd, $_POST['firstname']);
+				$sql = "UPDATE Users SET firstname='" .$firstname . "'WHERE id='" . $id . "'";
+				mysqli_query($bdd, $sql);
+			}
+			if (!(empty($_POST['lastname'])))
+			{
+				$lastname = mysqli_real_escape_string($bdd, $_POST['lastname']);
+				$sql = "UPDATE Users SET lastname='" .$lastname . "'WHERE id='" . $id . "'";
+				mysqli_query($bdd, $sql);
+			}
+			if (!(empty($_POST['email'])))
+			{
+				$email= mysqli_real_escape_string($bdd, $_POST['email']);
+				$sql = "UPDATE Users SET email='" .$email . "'WHERE id='" . $id . "'";
+				mysqli_query($bdd, $sql);
+			}
+			if (!(empty($_POST['passwd'])))
+			{
+				$passwd = hash('whirlpool', $_POST['passwd']);
+				$sql = "UPDATE Users SET passwd='" .$passwd . "'WHERE id='" . $id . "'";
+				mysqli_query($bdd, $sql);
+			}
+		}
+	}
+}
+else if (isset($_POST['submit']) && $_POST['submit'] === 'Creer Utilisateur')
+{
+	$firstname = mysqli_real_escape_string($bdd, $_POST['firstname']);
+	$lastname = mysqli_real_escape_string($bdd, $_POST['lastname']);
+	$mail = mysqli_real_escape_string($bdd, $_POST['email']);
+	$passwd = hash('whirlpool', $_POST['passwd']);
+	$req = "INSERT INTO Users (firstname, lastname, email, passwd) VALUES('" . $firstname . "', '" . $lastname . "', '" . $mail . "', '" .$passwd . "')";
+	mysqli_query($bdd, $req);
+}
+echo "<form method='POST' action='modif_user.php' >";
+echo "Prenom :<input type='text' name='firstname' value=''><br />";
+echo "Nom :<input type='text' name='lastname' value=''><br />";
+echo "Email :<input type='text' name='email' value=''><br />";
+echo "mot de passe :<input type='password' name='passwd' value=''><br />";
+echo "<input type='submit' name='submit' value='Creer Utilisateur'>";
+echo "</form> <br />";
+$req = "SELECT firstname, lastname, email, id FROM Users";
+$res = mysqli_query($bdd, $req);
+while ($tmp = mysqli_fetch_assoc($res)) {
+echo "<form method='POST' action='modif_user.php' >";
+echo "Prenom :<input type='text' name='firstname' value='" . $tmp['firstname'] . "'><br />";
+echo "Nom :<input type='text' name='lastname' value='" . $tmp['lastname'] . "'><br />";
+echo "Email :<input type='text' name='email' value='" . $tmp['email'] . "'><br />";
+echo "mot de passe :<input type='password' name='passwd' value=''><br />";
+echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
+echo "<input type='submit' name='submit' value='Modifier Utilisateur'>";
+echo "</form> <br />";
+echo "<form method='POST' action='modif_user.php' >";
+echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
+echo "<input type='submit' name='submit' value='Suprimer Utilisateur'>";
+echo "</form> <br />";
+}
+mysqli_free_result($res);
+include("footer.php");
+?>

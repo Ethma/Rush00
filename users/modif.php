@@ -10,29 +10,42 @@ if (isset($_POST['submit']) && $_POST['submit'] === "Supprimer")
 	mysqli_query($bdd, $req);
 	header("Location: logout.php");
 }
-if (isset($_POST['oldpw']) && isset($_POST['newpw']) && isset($_POST['submit']) && $_POST['submit'] === "OK")
+if (isset($_POST['submit']) && $_POST['submit'] === "OK")
 {
-	$passwd = hash('whirlpool', $_POST['newpw']);
-	$oldpasswd = hash('whirlpool', $_POST['oldpw']);
-	$req = "SELECT passwd FROM Users WHERE id='" . $_SESSION['userid'] . "'";
-	$result = mysqli_query($bdd, $req);
-	while ($tmp = mysqli_fetch_assoc($result)) {
-		if ($tmp['passwd'] === $oldpasswd)
-		{
-			$sql = "UPDATE Users SET passwd='" . $passwd . "' WHERE id='" . $_SESSION['userid'] . "'";
-			$result2 = mysqli_query($bdd, $sql);
-			mysqli_free_result($result2);
-			header("Location: ../index.php");
-		}
+	if (!empty($_POST['firstname']))
+	{
+		$firstname = mysqli_real_escape_string($bdd, $_POST['firstname']);
+		$sql = "UPDATE Users SET firstname='" . $firstname . "' WHERE id='" . $_SESSION['userid'] . "'";
+		$result = mysqli_query($bdd, $sql);
 	}
-	$error = "Ancien pass incorrect.";
-	mysqli_free_result($result);
+	if (!empty($_POST['lastname']))
+	{
+		$lastname = mysqli_real_escape_string($bdd, $_POST['lastname']);
+		$sql = "UPDATE Users SET lastname='" . $lastname . "' WHERE id='" . $_SESSION['userid'] . "'";
+		$result = mysqli_query($bdd, $sql);
+	}
+	if (!empty($_POST['email']))
+	{
+		$email = mysqli_real_escape_string($bdd, $_POST['email']);
+		$sql = "UPDATE Users SET email='" . $email . "' WHERE id='" . $_SESSION['userid'] . "'";
+		$result = mysqli_query($bdd, $sql);
+	}
+	if (!empty($_POST['newpw']))
+	{
+		$newpw = hash('whirlpool', $_POST['newpw']);
+		$sql = "UPDATE Users SET passwd='" . $newpw . "' WHERE id='" . $_SESSION['userid'] . "'";
+		$result = mysqli_query($bdd, $sql);
+	}
+	echo "Compte mis à jour.";
 }
 ?>
 <html><body>
-<?php if (!(empty($error))) {echo $error;}?>
 <form method="POST" action="modif.php" >
-Ancien mot de passe: <input type='password' name='oldpw' value=''/>
+Nom :<input type='text' name='firstname' value=''/>
+<br />
+Prenom :<input type='text' name='lastname' value=''/>
+<br />
+Email :<input type='text' name='email' value=''/>
 <br />
 Nouveau mot de passe: <input type='password' name='newpw' value=''/>
 <br />

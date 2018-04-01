@@ -1,3 +1,4 @@
+<a href='../index.php'>Accueil</a>
 <?php
 if($_POST['submit'])
 {
@@ -23,7 +24,7 @@ if($_POST['submit'])
 	mysqli_free_result($req);
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Categories (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, item_id INT(10) NOT NULL, nom_categories VARCHAR(30))');
 	mysqli_free_result($req);
-	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Commande (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, user_id INT(10) NOT NULL)');
+	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Commande (id INT(10) UNSIGNED, user_id INT(10) NOT NULL, item_id INT(10) NOT NULL, qte INT(10))');
 	mysqli_free_result($req);
 	$req = mysqli_query($bdd, 'CREATE TABLE IF NOT EXISTS Panier (id INT(10) UNSIGNED, item_id INT(10) NOT NULL, qte INT(10))');
 	mysqli_free_result($req);

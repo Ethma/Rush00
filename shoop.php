@@ -22,11 +22,8 @@ if (isset($_POST['submit']) && $_POST['submit'] === "Filtrer" && $_POST['Categor
 else
 {
 ?>
-<br \>
-<a href="produit.php?p=5.196.225.53/img/klim-aim.png" ><img src="http://5.196.225.53/img/klim-aim.png" alt="nouveau produit"><br /><br /><span class="myButton">>MEILLEURE VENTE</span></a><br />
-<br \>
-<a href="produit.php?p=5.196.225.53/img/klim-chroma.png"><img src="http://5.196.225.53/img/klim-chroma.png" alt="produit en solde"><br /><br /><span class="myButton">>FIN DE STOCK</span></a><br />
-<br />
+<a href="produit.php?p=5.196.225.53/img/klim-aim.png"><img src="http://5.196.225.53/img/klim-aim.png" alt="nouveau produit"><br /><br /><span class="myButton">!MEILLEURE VENTE!</span></a><br /><br />
+<a href="produit.php?p=5.196.225.53/img/klim-chroma.png"><img src="http://5.196.225.53/img/klim-chroma.png" alt="produit en solde"><br /><br /><span class="myButton">FIN DE SERIE!</span></a><br /><br />
 <?PHP
 }
 ?>
@@ -50,9 +47,11 @@ else
 			echo "<OPTION>" . $tmp2['nom_categories'];
 		}
 	}
+	mysqli_free_result($result2);
 ?>
 </SELECT>
 <input type='submit' name='submit' value='Filtrer'>
+</form>
 <?PHP
 ?>
 <?PHP

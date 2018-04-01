@@ -11,24 +11,57 @@ if ($_POST['nom'] && $_POST['prix'] && $_POST['description'] && $_POST['submit']
 	$result = mysqli_query($bdd, $req);
 	mysqli_free_result($result);
 }
-else
+else if (isset($_POST['submit']) && isset($_POST['id']))
 {
+	$id = mysqli_real_escape_string($bdd, $_POST['id']);
+	if ($_POST['submit'] === 'Modifier Item')
+	{
+		if (!(empty($_POST['nom'])))
+		{
+			$nom = mysqli_real_escape_string($bdd, $_POST['nom']);
+			$sql = "UPDATE Item SET nom='" .$nom . "'WHERE id='" . $id . "'";
+			mysqli_query($bdd, $sql);
+		}
+		if (!(empty($_POST['prix'])))
+		{
+			$prix = floatval($_POST['prix']);
+			$sql = "UPDATE Item SET prix='" .$prix . "'WHERE id='" . $id . "'";
+			mysqli_query($bdd, $sql);
+		}
+		if (!(empty($_POST['description'])))
+		{
+			$description = mysqli_real_escape_string($bdd, $_POST['description']);
+			$sql = "UPDATE Item SET description='" .$description . "'WHERE id='" . $id . "'";
+			mysqli_query($bdd, $sql);
+		}
+		if (!(empty($_POST['image'])))
+		{
+			$image = mysqli_real_escape_string($bdd, $_POST['image']);
+			$sql = "UPDATE Item SET image='" .$image . "'WHERE id='" . $id . "'";
+			mysqli_query($bdd, $sql);
+		}
+	}
+	if ($_POST['submit'] === 'Suprimer Item')
+	{
+		$sql = "DELETE FROM Item WHERE id='" . $id . "'";
+		mysqli_query($bdd, $sql);
+	}
+}
 	if ($_POST['submit'] && $_POST['submit'] === "OK")
 	{
 		if (!$_POST['nom'])
-			echo "Champ Nom manquant. <br />";
+			echo "Champ Nom manquand. <br />";
 		if (!$_POST['prix'])
-			echo "Champ Prix manquant. <br />";
+			echo "Champ Prix manquand. <br />";
 		if (!$_POST['description'])
-			echo "Champ description manquant. <br />";
-		if (!$_POST['img'])
-			echo "Champ image manquant. <br /><br />";
+			echo "Champ description manquand. <br />";
 	}
 ?>
 <html><body>
-<a href="admin.php"><span class='btn'>>Retour au menu admin</span></a><br />
-<br />
-<br />
+<?PHP
+if (isset($_SESSION['admin']))
+	echo "<br /><br /><a href='admin/admin.php'><span class='btn'>Administration</span></a><br /><br />";
+?>
 <form method="POST" action="additem.php" >
 Nom : <input type='text' name='nom' value=''/>
 <br />
@@ -43,5 +76,21 @@ image (url): <input type='text' name='img' value=''/>
 </body>
 </html>
 <?php
+$req = "SELECT id, nom, prix, description, image FROM Item";
+$res = mysqli_query($bdd, $req);
+while ($tmp = mysqli_fetch_assoc($res)) {
+echo "<form method='POST' action='additem.php' >";
+echo "Nom du produit :<input type='text' name='nom' value='" . $tmp['nom'] . "'><br />";
+echo "Prix de vente :<input type='text' name='prix' value='" . $tmp['prix'] . "'><br />";
+echo "Description du produit :<input type='text' name='description' value='" . $tmp['description'] . "'><br />";
+echo "Image (url) :<input type='text' name='image' value='" . $tmp['image'] . "'><br />";
+echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
+echo "<input type='submit' name='submit' value='Modifier Item'>";
+echo "</form> <br />";
+echo "<form method='POST' action='additem.php' >";
+echo "<input type='hidden' name='id' value='" . $tmp['id'] . "'/>";
+echo "<input type='submit' name='submit' value='Suprimer Item'>";
+echo "</form> <br />";
 }
+mysqli_free_result($res);
 ?>

@@ -26,6 +26,7 @@
 		
 		Proin non elit dapibus, finibus quam a, cursus risus. Donec placerat felis vel congue bibendum. Nulla viverra risus felis, id ornare neque euismod at. Fusce a lorem orci. Vestibulum facilisis nunc ut dolor tincidunt consectetur. Integer nec commodo urna. Maecenas nec lacus sit amet lectus aliquet consectetur eu vitae augue. Integer eleifend venenatis nunc, sed tempor arcu. Sed sit amet pulvinar nibh. Quisque ultricies rhoncus enim a viverra. Aliquam vitae nisi arcu. Vivamus venenatis vel dui nec ultrices. Quisque blandit leo non magna tincidunt, id commodo justo efficitur. Vestibulum posuere dolor ac felis blandit mollis.
 		<br />
-		<a href='index.php'>Accueil<a />
+		<br />
+		<a href='index.php'><span class='btn'>Accueil</span><a />
 	</body>
 </html>

@@ -11,7 +11,7 @@ if (isset($_POST['submit']))
 	echo "Login Error <br />";
 echo "<html><body>";
 echo '<form method="post" action=login.php >';
-echo "Identifiant: <input type='text' name='login' value=''/>";
+echo "Prénom: <input type='text' name='login' value=''/>";
 echo "<br />";
 echo "Mot de passe: <input type='password' name='passwd' value=''/>";
 echo "<br />";

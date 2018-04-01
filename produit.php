@@ -10,15 +10,19 @@ session_start();
 if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
 {
 echo '<a href="http://127.0.0.1:8083/00/index.php"><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a /> <br \>';
-echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>";
+echo "<a href='users/modif.php'><span class='btn'>>Mes informations</span></a>";
 ?>
-<br \>
-<br \>
-<a href="panier.php">  Voir panier</a>
-<a href="users/logout.php">Deconnexion</a>
+<br />
+<br />
+<br />
+<a href="panier.php"><span class="btn">>Mon panier</span></a>
+<br />
+<br />
+<br />
+<a href="users/logout.php"<span class="btn">>Déconnexion</span></a>
+<br />
+<br />
 <?PHP
-if (isset($_SESSION['admin']))
-echo "<a href='admin/admin.php'>administration</a>";
 }
 else
 {
@@ -26,15 +30,28 @@ else
 <br />
 <a href='http://127.0.0.1:8083/00/index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
 <br />
-<a href="users/create.php">Inscription</a>
-<a href="users/login.php">Connexion</a>
-<a href="panier.php">Voir panier</a>
+<a href="users/create.php"> <span class="btn">>Inscription</span></a>
+<br />
+<br />
+<br />
+<a href="users/login.php"><span class="btn">>Connexion</span></a>
+<br />
+<br />
+<br />
+<a href="panier.php"><span class="btn">> Mon Panier</span><br /></a>
+<br />
 <?PHP
 }
 ?>
 </header>
 <?php
 include __DIR__ . '/config/bdd.php';
+if (isset($_GET['itad']))
+{
+	$itpad = mysqli_real_escape_string($bdd, $_POST['itpad']);
+	$req = "DELETE FROM Categories WHERE id='" . $itpad . "'";
+	mysqli_query($bdd, $req);
+}
 if (!$_GET['p'])
 	header("Location: index.php");
 else
@@ -71,6 +88,13 @@ if (isset($_SESSION['admin']))
 	<?php echo "<input type='hidden' name='id' value= '" . $id . "'>";?>
 	<input type='submit' name='submit' value='ajouter une categorie'>
 </form>
-<?php }
+<?php
+	$sql2 = "SELECT id, nom_categories FROM Categories WHERE item_id='" . $id . "'";
+	$result2 = mysqli_query($bdd, $sql2);
+	while ($tmp2 = mysqli_fetch_assoc($result2)) {
+		echo "<a href=produit.php?itad=" . $tmp2['id'] . ">supprimer " . $tmp2['nom_categories'] . "</a><br />";
+	}
+	mysqli_free_result($result2);
+}
 include("footer.php");
 ?>

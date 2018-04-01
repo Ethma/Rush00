@@ -3,25 +3,37 @@ include("header.php");
 include __DIR__ . '/config/bdd.php';
 if (isset($_POST['submit']) && isset($_SESSION['loged']))
 {
-	if (!isset($_SESSION['cmd']))
+	if ($_POST['submit'] === 'Sauvegarder panier')
 	{
-		$sql = "INSERT INTO Commande (user_id) VALUE('" . $_SESSION['userid'] . "')";
-		$res = mysqli_query($bdd, $sql);
-		$id = mysqli_insert_id($bdd);
-		$_SESSION['cmd'] = $id;
-		mysqli_free_result($res);
+		if (isset($_SESSION['panier'])){
+			$sql = "DELETE FROM Panier WHERE id='" . $_SESSION['userid'] . "'";
+			mysqli_query($bdd, $sql);
+			foreach($_SESSION['panier'] as $k => $v)
+			{
+				$sql = "INSERT INTO Panier (id, item_id, qte) VALUE('" . $_SESSION['userid'] . "', '" . $k . "', '" . $v . "')";
+				mysqli_query($bdd, $sql);
+			}
+		}
 	}
-	else
+	else if ($_POST['submit'] === 'Valider panier')
 	{
-		$id = $_SESSION['cmd'];
-		$sql = "DELETE FROM Panier WHERE id='" . $id . "'";
-		$result2 = mysqli_query($bdd, $sql);
-	}
-	if (isset($_SESSION['panier'])){
-		foreach($_SESSION['panier'] as $k => $v)
-		{
-			$sql = "INSERT INTO Panier (id, item_id, qte) VALUE('" . $id . "', '" . $k . "', '" . $v . "')";
-			$result = mysqli_query($bdd, $sql);
+		if (isset($_SESSION['panier'])){
+			$id = 0;
+			$req = "SELECT id FROM Commande";
+			$result = mysqli_query($bdd, $req);
+			while ($tmp = mysqli_fetch_assoc($result)) {
+				$id = $tmp['id'];
+			}
+			$id = $id + 1;
+			mysqli_free_result($result);
+			foreach($_SESSION['panier'] as $k => $v)
+			{
+				$sql = "INSERT INTO Commande (id, user_id, item_id, qte) VALUE('" . $id . "', '" . $_SESSION['userid'] . "', '" . $k . "', '" . $v . "')";
+				mysqli_query($bdd, $sql);
+				$sql2 = "DELETE FROM Panier WHERE id='" . $_SESSION['userid'] . "'";
+				mysqli_query($bdd, $sql2);
+				unset($_SESSION['panier']);
+			}
 		}
 	}
 }

@@ -8,7 +8,7 @@ if (!$_SESSION['admin'])
 <a href="additem.php"><span class='btn'>>add item</span></a></br />
 </br />
 </br />
-<a href="deluser.php"><span class='btn'>>Suprimer utilisateur</span></a><br />
+<a href="modif_user.php"><span class='btn'>>Suprimer utilisateur</span></a><br />
 </br />
 </br />
 <a href="cmd.php"><span class='btn'>>Voir commande</span></a>
