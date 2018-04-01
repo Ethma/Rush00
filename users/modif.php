@@ -1,4 +1,5 @@
 <?PHP
+include("header.php");
 include __DIR__ . '/../config/bdd.php';
 session_start();
 if ($_SESSION['loged'])

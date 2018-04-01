@@ -1,4 +1,5 @@
 <?php
+include("header.php");
 session_start();
 include __DIR__ . '/../header.php';
 include __DIR__ . '/../config/bdd.php';
@@ -20,5 +21,8 @@ echo "<input type='submit' name='submit' value='Sup Utilisateur'>";
 echo "</form> <br />";
 }
 mysqli_free_result($res);
-include("footer.php");
+?>
+<html>
+<?php
+include("../footer.php");
 ?>

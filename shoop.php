@@ -22,8 +22,11 @@ if (isset($_POST['submit']) && $_POST['submit'] === "Filtrer" && $_POST['Categor
 else
 {
 ?>
-<a href="produit.php?p=5.196.225.53/img/klim-aim.png"><img style="height:200px" src="http://5.196.225.53/img/klim-aim.png" alt="nouveau produit"></a>
-<a href="produit.php?p=5.196.225.53/img/klim-chroma.png"><img style="height:200px" src="http://5.196.225.53/img/klim-chroma.png" alt="produit en solde"></a>
+<br \>
+<a href="produit.php?p=5.196.225.53/img/klim-aim.png" ><img src="http://5.196.225.53/img/klim-aim.png" alt="nouveau produit"><br /><br /><span class="myButton">>MEILLEURE VENTE</span></a><br />
+<br \>
+<a href="produit.php?p=5.196.225.53/img/klim-chroma.png"><img src="http://5.196.225.53/img/klim-chroma.png" alt="produit en solde"><br /><br /><span class="myButton">>FIN DE STOCK</span></a><br />
+<br />
 <?PHP
 }
 ?>

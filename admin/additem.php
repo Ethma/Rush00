@@ -1,4 +1,5 @@
 <?PHP
+include("header.php");
 include __DIR__ . '/../config/bdd.php';
 if ($_POST['nom'] && $_POST['prix'] && $_POST['description'] && $_POST['submit'] && $_POST['submit'] === "OK")
 {
@@ -15,14 +16,19 @@ else
 	if ($_POST['submit'] && $_POST['submit'] === "OK")
 	{
 		if (!$_POST['nom'])
-			echo "Champ Nom manquand. <br />";
+			echo "Champ Nom manquant. <br />";
 		if (!$_POST['prix'])
-			echo "Champ Prix manquand. <br />";
+			echo "Champ Prix manquant. <br />";
 		if (!$_POST['description'])
-			echo "Champ description manquand. <br />";
+			echo "Champ description manquant. <br />";
+		if (!$_POST['img'])
+			echo "Champ image manquant. <br /><br />";
 	}
 ?>
 <html><body>
+<a href="admin.php"><span class='btn'>>Retour au menu admin</span></a><br />
+<br />
+<br />
 <form method="POST" action="additem.php" >
 Nom : <input type='text' name='nom' value=''/>
 <br />

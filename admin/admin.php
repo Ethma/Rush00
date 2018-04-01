@@ -1,9 +1,14 @@
 <?php
+include("header.php");
 include __DIR__ . '/../config/bdd.php';
 session_start();
 if (!$_SESSION['admin'])
 	header("Location: index.php");
 ?>
-<a href="additem.php">add item</a>
-<a href="deluser.php">Suprimer utilisateur</a>
-<a href="cmd.php">Voir commande</a>
+<a href="additem.php"><span class='btn'>>add item</span></a></br />
+</br />
+</br />
+<a href="deluser.php"><span class='btn'>>Suprimer utilisateur</span></a><br />
+</br />
+</br />
+<a href="cmd.php"><span class='btn'>>Voir commande</span></a>

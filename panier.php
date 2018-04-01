@@ -9,8 +9,11 @@
 session_start();
 if (isset($_SESSION['loged']) && $_SESSION['loged'] == true)
 {
+echo '<a href="http://127.0.0.1:8083/00/index.php"><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a /> <br \>';
 echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>";
 ?>
+<br \>
+<br \>
 <a href="panier.php">  Voir panier</a>
 <a href="users/logout.php">Deconnexion</a>
 <?PHP
@@ -20,7 +23,6 @@ echo "<a href='admin/admin.php'>administration</a>";
 else
 {
 ?>
-<br />
 <a href='/00/index.php'><IMG SRC="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuErRBKmhzI0Dd9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY"><a />
 <br />
 <a href="users/create.php">Inscription</a>
