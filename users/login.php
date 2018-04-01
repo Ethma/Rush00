@@ -15,7 +15,7 @@ echo "Prénom: <input type='text' name='login' value=''/>";
 echo "<br />";
 echo "Mot de passe: <input type='password' name='passwd' value=''/>";
 echo "<br />";
-echo "<input type='submit' name='submit' value='Connexion'>";
+echo "<input type='submit' name='submit' value='OK'>";
 echo "<br \>";
 echo "</form>";
 echo "</html></body>";

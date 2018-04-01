@@ -15,7 +15,7 @@ echo "Mon compte : <a href='users/modif.php'>" . $_SESSION['firstname'] . "</a>"
 <a href="users/logout.php"><span class='btn'>Déconnexion</span></a>
 <?PHP
 if (isset($_SESSION['admin']))
-echo "<a href='admin/admin.php'>administration</a>";
+echo "<a href='admin/admin.php'>Administration</a>";
 }
 else
 {
@@ -54,18 +54,18 @@ else
 	if (isset($_POST['submit']) && $_POST['submit'] === "OK")
 	{
 		if (empty($_POST['firstname']))
-			echo "Champ Prenom manquant. <br />";
+			echo "Champ Prénom manquant. <br />";
 		if (empty($_POST['lastname']))
 			echo "Champ Nom manquant. <br />";
 		if (empty($_POST['mail']))
 			echo "Champ Mail manquant. <br />";
 		if (empty($_POST['passwd']))
-			echo "Champ Password manquant. <br />";
+			echo "Champ mot de passe manquant. <br />";
 	}
 ?>
 <html><body>
 <form method="POST" action=create.php >
-Prenom: <input type='text' name='firstname' value=''/>
+Prénom: <input type='text' name='firstname' value=''/>
 <br />
 Nom: <input type='text' name='lastname' value=''/>
 <br />
@@ -73,7 +73,7 @@ Adresse mail: <input type='text' name='mail' value=''/>
 <br />
 Mot de passe: <input type='password' name='passwd' value=''/>
 <br />
-<input type='submit' name='submit' value="Valider l'inscrition">
+<input type='submit' name='submit' value="OK">
 <br /> 
 </form>
 </body>

@@ -43,7 +43,7 @@ if (isset($_POST['submit']) && $_POST['submit'] === "OK")
 <form method="POST" action="modif.php" >
 Nom :<input type='text' name='firstname' value=''/>
 <br />
-Prenom :<input type='text' name='lastname' value=''/>
+Prénom :<input type='text' name='lastname' value=''/>
 <br />
 Email :<input type='text' name='email' value=''/>
 <br />
